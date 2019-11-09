@@ -1,0 +1,12 @@
+name = "TFAR LR Settings";
+tooltipOwned="TFAR LR Settings";
+picture = "";
+logoSmall = "";
+logo = "";
+logoOver = "";
+hideName = 0;
+hidePicture = 0;
+actionName = "Github";
+action = "https://github.com/M3ales/MIRA_mods";
+description = "Adds option to save/load TFAR LR Settings";
+overview = "Adds option to save/load TFAR LR Settings";
