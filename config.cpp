@@ -17,7 +17,7 @@ class CfgFunctions
         class TFARLRSettings{
             tag = "CHTR_TFAR";
             requiredAddons[]={};
-            file="CHTR_TFAR\functions";
+            file="CHTR_TFAR_QoL\functions";
 			class loadLRSettings{};
 			class saveLRSettings{};
         };
@@ -40,7 +40,7 @@ class CfgVehicles
 					};
 				condition = "call TFAR_fnc_haveLRRadio";
 				runOnHover=0;
-				icon="MIRA_TFAR\ui\arf.paa";
+				icon="CHTR_TFAR_QoL\ui\arf.paa";
 				class CHTR_saveLRSettings
 				{
 					displayName="Save";
