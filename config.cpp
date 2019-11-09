@@ -1,6 +1,6 @@
 class CfgPatches
 {
-	class MIRA_TFAR
+	class CHTR_TFAR_QoL
 	{
 		name = "TFAR LR Settings";
 		author = "CI-C Chatter and CI Mirror";
@@ -13,9 +13,9 @@ class CfgPatches
 
 class CfgFunctions
 {
-	class CHTR_TFAR{
+	class CHTR_TFAR_QoL{
         class TFARLRSettings{
-            tag = "CHTR_TFAR";
+            tag = "CHTR_TFAR_QoL";
             requiredAddons[]={};
             file="CHTR_TFAR_QoL\functions";
 			class loadLRSettings{};
@@ -29,7 +29,7 @@ class CfgVehicles
     class Man;
     class CAManBase: Man {
         class ACE_SelfActions {
-            class CHTR_TFAR {
+            class CHTR_TFAR_QoL {
 				displayName="LR Settings";
 				showDisabled=0;
 				exceptions[]=
@@ -44,12 +44,12 @@ class CfgVehicles
 				class CHTR_saveLRSettings
 				{
 					displayName="Save";
-					statement="call CHTR_TFAR_fnc_saveLRSettings";
+					statement="call CHTR_TFAR_QoL_fnc_saveLRSettings";
 				};
 				class CHTR_loadLRSettings
 				{
 					displayName="Load";
-					statement="call CHTR_TFAR_fnc_loadLRSettings";
+					statement="call CHTR_TFAR_QoL_fnc_loadLRSettings";
 				};
             };
         };
