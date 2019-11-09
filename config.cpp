@@ -4,7 +4,7 @@ class CfgPatches
 	{
 		name = "TFAR LR Settings";
 		author = "Chatter";
-		url = "https://github.com/M3ales/MIRA_mods";
+		url = "https://github.com/RTO-Chatter/CHTR_TFAR_QoL";
 		requiredAddons[] = {};
 		units[] = {};
 		weapons[] = {};
@@ -13,11 +13,11 @@ class CfgPatches
 
 class CfgFunctions
 {
-	class MIRA_TFAR{
+	class CHTR_TFAR{
         class TFARLRSettings{
-            tag = "MIRA_TFAR";
+            tag = "CHTR_TFAR";
             requiredAddons[]={};
-            file="MIRA_TFAR\functions";
+            file="CHTR_TFAR\functions";
 			class loadLRSettings{};
 			class saveLRSettings{};
         };
@@ -29,7 +29,7 @@ class CfgVehicles
     class Man;
     class CAManBase: Man {
         class ACE_SelfActions {
-            class MIRA_TFAR {
+            class CHTR_TFAR {
 				displayName="LR Settings";
 				showDisabled=0;
 				exceptions[]=
@@ -41,15 +41,15 @@ class CfgVehicles
 				condition = "call TFAR_fnc_haveLRRadio";
 				runOnHover=0;
 				icon="MIRA_TFAR\ui\arf.paa";
-				class MIRA_saveLRSettings
+				class CHTR_saveLRSettings
 				{
 					displayName="Save";
-					statement="call MIRA_TFAR_fnc_saveLRSettings";
+					statement="call CHTR_TFAR_fnc_saveLRSettings";
 				};
-				class MIRA_loadLRSettings
+				class CHTR_loadLRSettings
 				{
 					displayName="Load";
-					statement="call MIRA_TFAR_fnc_loadLRSettings";
+					statement="call CHTR_TFAR_fnc_loadLRSettings";
 				};
             };
         };
