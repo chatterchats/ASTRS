@@ -1,7 +1,7 @@
 /*
  * Author: CI-C Chatter and CI Mirror
  * Gets the active LR Radio of the Player(TFAR_fnc_activeLrRadio)
- * Sets the profileNamespace variable "arf_setter_settings" to have the settings of current raido by calling "TFAR_fnc_getLrSettings"
+ * Sets the profileNamespace variable "CHTR_TFAR_QoL_SettingsLR" to have the settings of current raido by calling "TFAR_fnc_getLrSettings"
  * Outputs "SaveLR Settings" as an indication of what was done.
  * 
  * Debugging option is on line 18, and outputs what was grabbed and stored in "_settings". Simply uncomment to enable, comment it out to disable.
@@ -20,6 +20,6 @@
  */
  
  _settings = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings;
-    profileNamespace setVariable ["arf_setter_settings", _settings];
+    profileNamespace setVariable ["CHTR_TFAR_QoL_SettingsLR", _settings];
     ["Saved LR Settings", "CHTR_TFAR_QoL\ui\lrsettings_root.paa"] call ace_common_fnc_displayTextPicture;
 //	systemChat format["%1", _settings];
