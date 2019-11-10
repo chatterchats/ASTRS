@@ -21,5 +21,5 @@
  
  _settings = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings;
     profileNamespace setVariable ["arf_setter_settings", _settings];
-    systemChat "Saved LR Settings";
+    ["Saved LR Settings", "CHTR_TFAR_QoL\ui\lrsettings_root.paa"] call ace_common_fnc_displayTextPicture;
 //	systemChat format["%1", _settings];
