@@ -40,10 +40,11 @@ class CfgVehicles
 					};
 				condition = "call TFAR_fnc_haveLRRadio";
 				runOnHover=0;
-				icon="CHTR_TFAR_QoL\ui\arf.paa";
+				icon="CHTR_TFAR_QoL\ui\tfarqol.paa";
 				class CHTR_saveLRSettings
 				{
 					displayName="Save";
+					icon="CHTR_TFAR_QoL\ui\save.paa"
 					statement="call CHTR_TFAR_QoL_fnc_saveLRSettings";
 				};
 				class CHTR_loadLRSettings
