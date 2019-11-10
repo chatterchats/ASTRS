@@ -1,9 +1,9 @@
 name = "ACE TFAR Long Range Setter";
 tooltipOwned="ACE TFAR Long Range Setter";
-picture = "CHTR_TFAR_QoL\ui\chtr_tfar_qol_iconLG.paa";
-logoSmall = "CHTR_TFAR_QoL\ui\chtr_tfar_qol_iconLG.paa";
-logo = "CHTR_TFAR_QoL\ui\chtr_tfar_qol_iconLG.paa";
-logoOver = "CHTR_TFAR_QoL\ui\chtr_tfar_qol_iconLG.paa";
+picture = "CHTR_TFAR_QoL\ui\lrsettings_iconLGNoTextAlpha.paa";
+logoSmall = "CHTR_TFAR_QoL\ui\lrsettings_iconLGNoTextAlpha.paa";
+logo = "CHTR_TFAR_QoL\ui\lrsettings_iconLGNoTextAlpha.paa";
+logoOver = "CHTR_TFAR_QoL\ui\lrsettings_iconLGNoTextAlpha.paa";
 hideName = 0;
 hidePicture = 0;
 actionName = "Github";

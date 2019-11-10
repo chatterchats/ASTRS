@@ -3,7 +3,7 @@ class CfgPatches
 	class CHTR_TFAR_QoL
 	{
 		name = "TFAR LR Settings";
-		author = "CI-C Chatter and CI Mirror";
+		author = "Chatter and M3ales";
 		url = "https://github.com/RTO-Chatter/CHTR_TFAR_QoL";
 		requiredAddons[] = {};
 		units[] = {};
