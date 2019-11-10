@@ -5,7 +5,7 @@ class CfgPatches
 		name = "TFAR LR Settings";
 		author = "Chatter and M3ales";
 		url = "https://github.com/RTO-Chatter/CHTR_TFAR_QoL";
-		requiredAddons[] = {"ace", "task_force_radio};
+		requiredAddons[] = {"ace", "task_force_radio"};
 		units[] = {};
 		weapons[] = {};
 	};
