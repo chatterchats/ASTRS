@@ -19,7 +19,7 @@
  * Public: No
  */
 
-_settings = profileNamespace getVariable ["CHTR_TFAR_QoL_SettingsLR", _settings];
+_settings = profileNamespace getVariable "CHTR_TFAR_QoL_SettingsLR";
 [(call TFAR_fnc_activeLrRadio) select 0, (call TFAR_fnc_activeLrRadio) select 1, _settings] call TFAR_fnc_setLrSettings;
 ["Loaded LR Settings", "CHTR_TFAR_QoL\ui\load.paa"] call ace_common_fnc_displayTextPicture;
 //	systemChat format["%1", _settings];
