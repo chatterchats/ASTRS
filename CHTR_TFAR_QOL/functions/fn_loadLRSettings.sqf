@@ -1,5 +1,5 @@
 /*
- * Author: CI-C Chatter and CI Mirror
+ * Authors: Chatter and M3ales
  * Gets the active LR Radio of the Player(call TFAR_fnc_activeLrRadio)
  * Sets the  radio to have the settings of CHTR_TFAR_QoL_SettingsLR by loading them from the private variable of "_settings"
  * Outputs "Loaded LR Settings" as an indication of what was done.
@@ -20,6 +20,6 @@
  */
 
 _settings = profileNamespace getVariable ["CHTR_TFAR_QoL_SettingsLR", _settings];
-     [(call TFAR_fnc_activeLrRadio) select 0, (call TFAR_fnc_activeLrRadio) select 1, _settings] call TFAR_fnc_setLrSettings;
-    ["Loaded LR Settings", "CHTR_TFAR_QoL\ui\lrsettings_load.paa"] call ace_common_fnc_displayTextPicture;
+[(call TFAR_fnc_activeLrRadio) select 0, (call TFAR_fnc_activeLrRadio) select 1, _settings] call TFAR_fnc_setLrSettings;
+["Loaded LR Settings", "CHTR_TFAR_QoL\ui\lrsettings_load.paa"] call ace_common_fnc_displayTextPicture;
 //	systemChat format["%1", _settings];
