@@ -29,31 +29,33 @@ class CfgVehicles
     class Man;
     class CAManBase: Man {
         class ACE_SelfActions {
-            class CHTR_TFAR_QoL {
-				displayName="LR Settings";
-				showDisabled=0;
-				exceptions[]=
+			class ACE_Equipment{
+				class CHTR_TFAR_QoL {
+					displayName="LR Settings";
+					showDisabled=0;
+					exceptions[]=
+						{
+							"isNotInside",
+							"isNotSwimming",
+							"isNotSitting"
+						};
+					condition = "call TFAR_fnc_haveLRRadio";
+					runOnHover=0;
+					icon="CHTR_TFAR_QoL\ui\lrsettings_root.paa"
+					class CHTR_saveLRSettings
 					{
-						"isNotInside",
-						"isNotSwimming",
-						"isNotSitting"
+						displayName="Save";
+						icon="CHTR_TFAR_QoL\ui\lrsettings_save.paa"
+						statement="call CHTR_TFAR_QoL_fnc_saveLRSettings";
 					};
-				condition = "call TFAR_fnc_haveLRRadio";
-				runOnHover=0;
-				icon="CHTR_TFAR_QoL\ui\lrsettings_root.paa"
-				class CHTR_saveLRSettings
-				{
-					displayName="Save";
-					icon="CHTR_TFAR_QoL\ui\lrsettings_save.paa"
-					statement="call CHTR_TFAR_QoL_fnc_saveLRSettings";
+					class CHTR_loadLRSettings
+					{
+						displayName="Load";
+						icon="CHTR_TFAR_QoL\ui\lrsettings_load.paa"
+						statement="call CHTR_TFAR_QoL_fnc_loadLRSettings";
+					};
 				};
-				class CHTR_loadLRSettings
-				{
-					displayName="Load";
-					icon="CHTR_TFAR_QoL\ui\lrsettings_load.paa"
-					statement="call CHTR_TFAR_QoL_fnc_loadLRSettings";
-				};
-            };
-        };
+			};
+		};
     };
 };
