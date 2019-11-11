@@ -3,7 +3,7 @@ class CfgPatches {
 		name = "TFAR LR Settings";
 		author = "Chatter and M3ales";
 		url = "https://github.com/RTO-Chatter/CHTR_TFAR_QoL";
-		requiredAddons[] = {"ace", "task_force_radio"};
+		requiredAddons[] = {"ace_interact_menu", "task_force_radio"};
 		units[] = {};
 		weapons[] = {};
 	};
@@ -13,7 +13,7 @@ class CfgFunctions {
 	class CHTR_TFAR_QoL {
         class TFARLRSettings {
             tag = "CHTR_TFAR_QoL";
-            requiredAddons[] = {"ace", "task_force_radio"};
+            requiredAddons[] = {"ace_interact_menu", "task_force_radio"};
             file = "CHTR_TFAR_QoL\functions";
 			class loadLRSettings {};
 			class saveLRSettings {};
