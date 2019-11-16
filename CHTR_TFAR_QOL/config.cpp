@@ -34,7 +34,7 @@ class CfgVehicles {
 						"isNotSwimming",
 						"isNotSitting"
 					};
-					condition = "call TFAR_fnc_haveLRRadio";
+					condition = "call TFAR_fnc_haveLRRadio && call CHTR_TFAR_QoL_fnc_showLRCheck";
 					runOnHover = 0;
 					icon = "CHTR_TFAR_QoL\ui\interact_root.paa";
 					class CHTR_saveLRSettings {
@@ -50,5 +50,11 @@ class CfgVehicles {
 				};
 			};
 		};
+    };
+};
+
+class Extended_PreInit_EventHandlers {
+    class CHTR_preInit {
+        init = "call compile preprocessFileLineNumbers 'XEH_preInit.sqf'";
     };
 };
