@@ -18,8 +18,9 @@
  *
  * Public: No
  */
- 
+ #include "function_macros.hpp"
+
 _settings = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings;
-profileNamespace setVariable ["CHTR_TFAR_QoL_SettingsLR", _settings];
-["Saved LR Settings", "CHTR_TFAR_QoL\ui\interact_root.paa"] call ace_common_fnc_displayTextPicture;
+profileNamespace setVariable [QUOTE(PROFILESETTINGS_LR) , _settings];
+["Saved LR Settings", QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
 //	systemChat format["%1", _settings];

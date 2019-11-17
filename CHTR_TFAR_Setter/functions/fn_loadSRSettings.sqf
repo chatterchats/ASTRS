@@ -18,8 +18,9 @@
  *
  * Public: No
  */
+#include "function_macros.hpp"
 
-_settings = profileNamespace getVariable "CHTR_TFAR_QoL_SettingsLR";
-[(call TFAR_fnc_activeLrRadio) select 0, (call TFAR_fnc_activeLrRadio) select 1, _settings] call TFAR_fnc_setLrSettings;
-["Loaded LR Settings", "CHTR_TFAR_QoL\ui\load.paa"] call ace_common_fnc_displayTextPicture;
+_settings = profileNamespace getVariable QUOTE(PROFILESETTINGS_SR);
+[(call TFAR_fnc_activeSwRadio), _settings] call TFAR_fnc_setSwSettings;
+["Loaded SR Settings", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
 //	systemChat format["%1", _settings];

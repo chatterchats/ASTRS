@@ -1,2 +1,0 @@
-profileNamespace getVariable "lrOption"
-
