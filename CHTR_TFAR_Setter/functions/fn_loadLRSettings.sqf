@@ -18,7 +18,6 @@
  */
 #include "function_macros.hpp"
 
-
 params[["_showResult", true, [true]]];
 
 _settings = profileNamespace getVariable [QUOTE(PROFILESETTINGS_LR), []];

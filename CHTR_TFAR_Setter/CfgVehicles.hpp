@@ -1,8 +1,8 @@
 #define HAS_LR call TFAR_fnc_haveLRRadio
 #define HAS_SR call TFAR_fnc_haveSWRadio
-#define SHOW_LR call FUNC(SHOW_LRCheck)
-#define SHOW_SR call FUNC(SHOW_SRCheck)
-#define ALTERNATE_LAYOUT call FUNC(layoutOptionCheck)
+#define SHOW_LR call FUNC(showSRCheck)
+#define SHOW_SR call FUNC(showLRCheck)
+#define ALTERNATE_LAYOUT (call FUNC(layoutOptionCheck))
 
 class CfgVehicles {
     class Man;
@@ -22,13 +22,13 @@ class CfgVehicles {
 							displayName = "Load Both";
 							icon = QUOTE(ICON_PATH(interact_root));
 							statement = QUOTE(call FUNC(loadBothSettings));
-							condition = QUOTE(!(ALTERNATE_LAYOUT) && SHOW_LR && SHOW_SR && HAS_LR && HAS_SR);
+							condition = QUOTE(!ALTERNATE_LAYOUT && SHOW_LR && SHOW_SR && HAS_LR && HAS_SR);
 					}
 					//Original Layout, PROFILESETTINGS_PREF_LAYOUT = False
 					class LR_Root {
 						displayName = "LR";
 						icon = QUOTE(ICON_PATH(lr));
-						condition = QUOTE(!(ALTERNATE_LAYOUT) && SHOW_LR && HAS_LR);
+						condition = QUOTE(!ALTERNATE_LAYOUT && SHOW_LR && HAS_LR);
 						class LR_Load {
 							icon = QUOTE(ICON_PATH(load));
 							statement = QUOTE(call FUNC(loadLRSettings));
@@ -44,7 +44,7 @@ class CfgVehicles {
 					class SR_Root {
 						displayName = "SR";
 						icon = QUOTE(ICON_PATH(sr));
-						condition = QUOTE(!(ALTERNATE_LAYOUT) && SHOW_SR && HAS_SR);
+						condition = QUOTE(!ALTERNATE_LAYOUT && SHOW_SR && HAS_SR);
 						class SR_Load {
 							icon = QUOTE(ICON_PATH(load));
 							statement = QUOTE(call FUNC(loadSRSettings));
