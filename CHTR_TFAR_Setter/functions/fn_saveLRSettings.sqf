@@ -4,23 +4,27 @@
  * Sets the profileNamespace variable "CHTR_TFAR_QoL_SettingsLR" to have the settings of current raido by calling "TFAR_fnc_getLrSettings"
  * Outputs "SaveLR Settings" as an indication of what was done.
  * 
- * Debugging option is on line 18, and outputs what was grabbed and stored in "_settings". Simply uncomment to enable, comment it out to disable.
- *      Default: Disabled
  *
  * Arguments:
- * None
+ * _showResult (optional): If true will display a message at the top right using ace_common_fnc_displayTextPicture on success
  *
  * Return Value:
  * None
  *
  * Example:
- * call CHTR_TFAR_fnc_saveLRSettings
+ * call CHTR_TFAR_Setter_fnc_saveLRSettings
  *
  * Public: No
  */
- #include "function_macros.hpp"
+#include "function_macros.hpp"
+
+params[["_showResult", true, [true]]];
 
 _settings = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings;
 profileNamespace setVariable [QUOTE(PROFILESETTINGS_LR) , _settings];
-["Saved LR Settings", QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
-//	systemChat format["%1", _settings];
+diag_log format["Saving LR Settings: %1", _settings];
+if(_showResult) then {
+	["Saved LR Settings", QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
+};
+//check it saved correctly, return result
+profileNamespace getVariable QUOTE(PROFILESETTINGS_LR) == _settings

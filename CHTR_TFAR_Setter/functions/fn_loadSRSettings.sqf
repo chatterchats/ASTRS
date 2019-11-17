@@ -1,27 +1,33 @@
 /*
  * Authors: Chatter and M3ales
- * Gets the active LR Radio of the Player(call TFAR_fnc_activeLrRadio)
- * Sets the  radio to have the settings of CHTR_TFAR_QoL_SettingsLR by loading them from the private variable of "_settings"
- * Outputs "Loaded LR Settings" as an indication of what was done.
+ * Gets the active SR Radio of the Player(call TFAR_fnc_activeSwRadio)
+ * Sets the  radio to have the settings of CHTR_TFAR_QoL_SettingsSR by loading them from the private variable of "_settings"
+ * Outputs "Loaded SR Settings" as an indication of what was done.
  * 
- * Debugging option is on line 18, and outputs what was grabbed and stored in "_settings". Simply uncomment to enable, comment it out to disable.
- *      Default: Disabled
  *
  * Arguments:
- * None
+ * _showResult (optional): If true will display a message at the top right using ace_common_fnc_displayTextPicture on success
  *
  * Return Value:
  * None
  *
  * Example:
- * call CHTR_TFAR_fnc_loadLRSettings
+ * call CHTR_TFAR_Setter_fnc_loadLRSettings
  *
  * Public: No
  */
 #include "function_macros.hpp"
 
-_settings = profileNamespace getVariable QUOTE(PROFILESETTINGS_SR);
+params[["_showResult", true, [true]]];
+
 _settings = profileNamespace getVariable [QUOTE(PROFILESETTINGS_SR), []];
+if(count _settings == 0) exitWith {
+	diag_log "Cannot load unset SR settings";
+	1
+};
 [(call TFAR_fnc_activeSwRadio), _settings] call TFAR_fnc_setSwSettings;
-["Loaded SR Settings", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
-//	systemChat format["%1", _settings];
+diag_log format["Loading SR Settings: %1", _settings];
+if(_showResult) then {
+	["Loaded SR Settings", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
+};
+0

@@ -24,6 +24,7 @@ class CfgFunctions {
 			class showLRCheck {};
 			class showSRCheck {};
 			class layoutOptionCheck {};
+			class loadBothSettings {};
         };
 	};
 };

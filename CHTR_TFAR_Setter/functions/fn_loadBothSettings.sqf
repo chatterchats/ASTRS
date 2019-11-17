@@ -18,17 +18,15 @@
  */
 #include "function_macros.hpp"
 
-
 params[["_showResult", true, [true]]];
 
-_settings = profileNamespace getVariable [QUOTE(PROFILESETTINGS_LR), []];
-if(count _settings == 0) exitWith {
-	diag_log "Cannot load unset LR settings";
-	1
+_resultLR = [false] call FUNC(loadLRSettings);
+_resultSR = [false] call FUNC(loadSRSettings);
+if(_resultLR == 0 && _resultSR == 0) then {
+	diag_log "Loaded LR and SR successfully";
+	if(_showResult) then {
+		["Loaded LR and SR Settings", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
+	};
 };
-[(call TFAR_fnc_activeLrRadio) select 0, (call TFAR_fnc_activeLrRadio) select 1, _settings] call TFAR_fnc_setLrSettings;
-diag_log format["Loading LR Settings: %1", _settings];
-if(_showResult) then {
-	["Loaded LR Settings", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
-};
-0
+
+_resultLR + _resultSR
