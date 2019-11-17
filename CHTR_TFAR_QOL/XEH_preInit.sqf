@@ -1,5 +1,6 @@
-#include "config_macros.hpp"
-[// Show or hide LR settings
+
+
+/*[// Show or hide LR settings
     "ACE TFAR Radio Setter", 
     "CHECKBOX", // setting type
     "Show", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
@@ -8,9 +9,11 @@
     nil, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
-        profileNamespace setVariable ["lrOPtion", _VALUE];
+        profileNamespace setVariable ["lrOption", _VALUE];
     } 
-] call cba_settings_fnc_init;
+] call cba_settings_fnc_init;*/
+
+["CHTR_TFAR_LROption", "CHECKBOX", ["LR Load/Save On", "Turn Off/On ability to set LR"], "ACE TFAR Radio Setter", true, nil, {params [["_value", FALSE]]; profileNamespace setVariable ["lrOption", _value]; diag_log "Setting Changed";}] call cba_settings_fnc_init;
 
 /* [// Show or hide SR settings
     "ACE TFAR Radio Setter",
@@ -21,9 +24,8 @@
     nil, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
-       	profileNamespace setVariable ["srOPtion", _VALUE];
+       	profileNamespace setVariable ["srOption", _VALUE];
     } 
 ] call cba_settings_fnc_init;
 */
-["Test_Setting_1", "CHECKBOX", ["-test checkbox-", "-tooltip-"], "My Category", true] call cba_settings_fnc_init;
-//Testing Status from CBA Documentation that SHOULD WORK DAMNIT
+

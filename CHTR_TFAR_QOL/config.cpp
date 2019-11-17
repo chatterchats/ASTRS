@@ -3,7 +3,7 @@ class CfgPatches {
 		name = "TFAR LR Settings";
 		author = "Chatter and M3ales";
 		url = "https://github.com/RTO-Chatter/CHTR_TFAR_QoL";
-		requiredAddons[] = {"ace_interact_menu", "task_force_radio"};
+		requiredAddons[] = {"ace_interact_menu", "task_force_radio", "cba_settings"};
 		units[] = {};
 		weapons[] = {};
 	};
@@ -13,10 +13,11 @@ class CfgFunctions {
 	class CHTR_TFAR_QoL {
         class TFARLRSettings {
             tag = "CHTR_TFAR_QoL";
-            requiredAddons[] = {"ace_interact_menu", "task_force_radio"};
+            requiredAddons[] = {"ace_interact_menu", "task_force_radio", "cba_settings"};
             file = "CHTR_TFAR_QoL\functions";
 			class loadLRSettings {};
 			class saveLRSettings {};
+			class showLRCheck {};
         };
 	};
 };
@@ -54,7 +55,7 @@ class CfgVehicles {
 };
 
 class Extended_PreInit_EventHandlers {
-    class CHTR_preInit {
-        init = "call compile preprocessFileLineNumbers 'XEH_preInit.sqf'";
+    class CHTR_TFAR_QoL {
+        init = "diag_log 'a1b1'; call compile preprocessFileLineNumbers 'CHTR_TFAR_QoL\XEH_preInit.sqf'";
     };
 };

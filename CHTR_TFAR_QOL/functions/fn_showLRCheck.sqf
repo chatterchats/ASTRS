@@ -1,3 +1,2 @@
-lrCheck_fnc = { 
-	profileNamespace getVariable "lrOption"
-};
+profileNamespace getVariable "lrOption"
+
