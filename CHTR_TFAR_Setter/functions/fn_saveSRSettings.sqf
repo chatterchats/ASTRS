@@ -21,6 +21,6 @@
 #include "function_macros.hpp"
 
 _settings = (call TFAR_fnc_activeSwRadio) call TFAR_fnc_getSwSettings;
-profileNamespace setVariable [ QUOTE(PROFILESETTINGS_SR) , _settings];
+profileNamespace setVariable [QUOTE(PROFILESETTINGS_SR) , _settings];
 ["Saved SR Settings", QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
 //	systemChat format["%1", _settings];
