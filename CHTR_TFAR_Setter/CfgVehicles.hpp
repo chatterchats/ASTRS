@@ -23,8 +23,8 @@ class CfgVehicles {
 							icon = QUOTE(ICON_PATH(interact_root));
 							statement = QUOTE([true] call FUNC(loadBothSettings));
 							condition = QUOTE(!ALTERNATE_LAYOUT && SHOW_LR && SHOW_SR && HAS_LR && HAS_SR);
-					}
-					//Original Layout, PROFILESETTINGS_PREF_LAYOUT = False
+					};
+					//Original Layout, ALTERNATE_LAYOUT = False
 					class LR_Root {
 						displayName = "LR";
 						icon = QUOTE(ICON_PATH(lr));
@@ -40,7 +40,7 @@ class CfgVehicles {
 							displayName = "Save";
 						};
 					};
-					//Original Layout, PROFILESETTINGS_PREF_LAYOUT = False
+					//Original Layout, ALTERNATE_LAYOUT = False
 					class SR_Root {
 						displayName = "SR";
 						icon = QUOTE(ICON_PATH(sr));
@@ -56,7 +56,7 @@ class CfgVehicles {
 							displayName = "Save";
 						};
 					};
-					//New Layout, PROFILESETTINGS_PREF_LAYOUT = True
+					//New Layout, ALTERNATE_LAYOUT = True
 					class Save_Root {
 						displayName = "Save";
 						statement = "";
@@ -75,7 +75,7 @@ class CfgVehicles {
 							condition = QUOTE(SHOW_SR && HAS_SR);
 						};
 					};
-					//New Layout, PROFILESETTINGS_PREF_LAYOUT = True
+					//New Layout, ALTERNATE_LAYOUT = True
 					class Load_Root {
 						displayName = "Load";
 						icon = QUOTE(ICON_PATH(load));

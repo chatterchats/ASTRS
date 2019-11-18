@@ -25,6 +25,10 @@ class CfgFunctions {
 			class showSRCheck {};
 			class layoutOptionCheck {};
 			class loadBothSettings {};
+			class getPrefs {};
+			class setPrefs {};
+			class getRadioData {};
+			class setRadioData {};
         };
 	};
 };

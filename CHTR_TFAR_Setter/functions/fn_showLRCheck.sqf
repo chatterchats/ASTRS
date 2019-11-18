@@ -1,2 +1,2 @@
  #include "function_macros.hpp"
- profileNamespace getVariable [QUOTE(PROFILESETTINGS_PREF_LR), true];
+_showLR = [0] call FUNC(getPrefs);

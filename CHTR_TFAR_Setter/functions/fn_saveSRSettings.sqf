@@ -21,10 +21,9 @@
 params[["_showResult", true, [true]]];
 
 _settings = (call TFAR_fnc_activeSwRadio) call TFAR_fnc_getSwSettings;
-profileNamespace setVariable [QUOTE(PROFILESETTINGS_SR) , _settings];
-diag_log format["Saving SR Settings: %1", _settings];
+[false, _settings] call FUNC(setRadioData);
 if(_showResult) then {
 	["Saved SR Settings", QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
 };
 //check it saved correctly, return result
-profileNamespace getVariable QUOTE(PROFILESETTINGS_SR) == _settings
+[false] call FUNC(getRadioData) == _settings
