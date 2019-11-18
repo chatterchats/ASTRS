@@ -21,7 +21,7 @@ class CfgVehicles {
 					class Load_Both {
 							displayName = "Load Both";
 							icon = QUOTE(ICON_PATH(interact_root));
-							statement = QUOTE(call FUNC(loadBothSettings));
+							statement = QUOTE([true] call FUNC(loadBothSettings));
 							condition = QUOTE(!ALTERNATE_LAYOUT && SHOW_LR && SHOW_SR && HAS_LR && HAS_SR);
 					}
 					//Original Layout, PROFILESETTINGS_PREF_LAYOUT = False
