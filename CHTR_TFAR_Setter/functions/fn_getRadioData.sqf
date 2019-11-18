@@ -1,5 +1,5 @@
 #include "function_macros.hpp"
-params[["_lr", true, [true, false]]];
+params[["_lr", true, [true]]];
 
 if(count GVAR(Settings) == 0) exitWith {
 	LOG_ERROR(QUOTE(GVAR(SETTINGS) not initialised));

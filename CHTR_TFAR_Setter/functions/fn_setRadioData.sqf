@@ -1,5 +1,5 @@
 #include "function_macros.hpp"
-params[["_lr", true, [true, false]], ["_value", [], [[]]]];
+params[["_lr", true, [true]], ["_value", [], [[]]]];
 
 if(count GVAR(Settings) == 0) exitWith {
 	LOG_ERROR(QUOTE(GVAR(SETTINGS) not initialised));
@@ -12,4 +12,5 @@ if(_lr) then {
 };
 
 GVAR(Settings) select GVAR(Profile) set [_index, _value];
-LOG(format["Updated [LR: %1] to: %2", _lr, _value]);
+_str = format["Updated [LR: %1] to: %2", _lr, _value];
+LOG(_str);
