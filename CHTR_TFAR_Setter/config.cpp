@@ -29,6 +29,7 @@ class CfgFunctions {
 			class setPrefs {};
 			class getRadioData {};
 			class setRadioData {};
+			class loadSettings {};
         };
 	};
 };
