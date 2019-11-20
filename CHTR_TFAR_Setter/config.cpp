@@ -31,6 +31,7 @@ class CfgFunctions {
 			class setRadioData {};
 			class loadSettings {};
 			class setProfile {};
+			class copyLegacyRadioData {};
         };
 	};
 };
