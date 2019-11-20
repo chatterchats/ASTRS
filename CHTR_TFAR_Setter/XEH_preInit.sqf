@@ -19,6 +19,16 @@ _currentProfile = _settings select _profileIndex;
 LOG("Profile Loaded: " + str _currentProfile);
 
 LOG("Creating CBA Addon Options");
+_lrShowRun = {
+	params [["_value", false]];
+	[0, _value] call FUNC(setPrefs);
+	LOG("LR Setting Changed");
+};
+_srShowRun = {
+	params [["_value", false]];
+	[1, _value] call FUNC(setPrefs);
+	LOG("SR Setting Changed");
+};
 _alternateLayoutRun = {
 	params [
 		["_value", false]
@@ -26,24 +36,19 @@ _alternateLayoutRun = {
 	[2, _value] call FUNC(setPrefs);
 	LOG("Layout Setting Changed");
 };
-
-_lrShowRun = {
+_shortcutEnabledRun = {
 	params [["_value", false]];
-	[0, _value] call FUNC(setPrefs);
-	LOG("LR Setting Changed");
-};
-
-_srShowRun = {
-	params [["_value", false]];
-	[1, _value] call FUNC(setPrefs);
-	LOG("SR Setting Changed");
+	[3, _value] call FUNC(setPrefs);
+	LOG("ShortcutEnabled Setting Changed");
 };
 
 _layoutDefault = [] call FUNC(layoutOptionCheck);
 _lrDefault = [] call FUNC(showLRCheck);
 _srDefault = [] call FUNC(showSRCheck);
+_shortcutEnabled = [] call FUNC(shortcutEnabledCheck);
 
 [QUOTE(GVAR(Layout)), "CHECKBOX", ["Alternate Layout", "Change Tree Layout"], "ACE TFAR Radio Setter", _layoutDefault, 0, _alternateLayoutRun] call cba_settings_fnc_init;
+[QUOTE(GVAR(Shortcut)), "CHECKBOX", ["Enable Load Shortcuts", "Turn Off/On ability to use root lr/sr icon to load settings"], "ACE TFAR Radio Setter", _shortcutEnabled, 0, _shortcutEnabledRun] call cba_settings_fnc_init;
 [QUOTE(GVAR(ShowLR)), "CHECKBOX", ["LR Load/Save On", "Turn Off/On ability to set LR"], "ACE TFAR Radio Setter", _lrDefault, 0, _lrShowRun] call cba_settings_fnc_init;
 [QUOTE(GVAR(ShowSR)), "CHECKBOX", ["SR Load/Save On", "Turn Off/On ability to set SR"], "ACE TFAR Radio Setter", _srDefault, 0, _srShowRun] call cba_settings_fnc_init;
 
