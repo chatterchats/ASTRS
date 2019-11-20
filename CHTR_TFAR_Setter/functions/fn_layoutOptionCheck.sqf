@@ -1,2 +1,3 @@
 #include "function_macros.hpp"
-[2] call FUNC(getPrefs);
+#include "defaults.hpp"
+[ALTERNATELAYOUT_INDEX] call FUNC(getPrefs);

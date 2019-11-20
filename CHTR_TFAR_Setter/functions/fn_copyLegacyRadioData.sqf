@@ -1,11 +1,26 @@
+/*
+ * Author: M3ales
+ * Copies LR/SR data from the old version of CHTR_TFAR_QoL, also deletes vars (setting to nil) once loaded.
+ *
+ * Arguments:
+ * None
+ *
+ * Return Value:
+ * None
+ *
+ * Example:
+ * call CHTR_TFAR_Setter_fnc_copyLegacyRadioData
+ *
+ * Public: No
+ */
 #include "function_macros.hpp"
-//macro to make more readable, will 'delete' variable specified from profileNamespace
-#define DELETE_VAR(name) profileNamespace setVariable [name, nil];
+//checks var is both an array and non 0 count
+#define IS_SET(varname) typeName varname == typeName [] && count varname != 0
 //macros for legacy names
 #define LEGACY_SETTINGS_LR "CHTR_TFAR_QoL_SettingsLR"
 #define LEGACY_SETTINGS_SR "CHTR_TFAR_QoL_SettingsSR"
-//checks var is both an array and non 0 count
-#define IS_SET(varname) typeName varname == typeName [] && count varname != 0
+//macro to make more readable, will 'delete' variable specified from profileNamespace
+#define DELETE_VAR(name) profileNamespace setVariable [name, nil];
 
 LOG("Checking for Legacy Radio Data");
 _oldLRData = profileNamespace getVariable [LEGACY_SETTINGS_LR, []];

@@ -1,3 +1,18 @@
+/*
+ * Authors: M3ales
+ * Loads settings data from public var, usable as reference due to array. Initialises to defaults if unset, and calls legacy copy when initialising.
+ *
+ * Arguments:
+ * None
+ *
+ * Return Value:
+ * Reference to _Settings profileNamespace var
+ *
+ * Example:
+ * call CHTR_TFAR_Setter_fnc_loadSettings
+ *
+ * Public: No
+ */
 #include "function_macros.hpp"
 #include "defaults.hpp"
 #define SETTINGS GVAR(Settings)

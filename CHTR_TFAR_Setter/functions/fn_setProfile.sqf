@@ -1,3 +1,18 @@
+/*
+ * Author: M3ales
+ * Sets the current profile to the specified profileIndex, mimimal type checking at present, use with caution
+ *
+ * Arguments:
+ * 0: the index of the profile you want set as current, 0 based <INTEGER>
+ *
+ * Return Value:
+ * None
+ *
+ * Example:
+ * [0] call CHTR_TFAR_Setter_fnc_setProfile
+ *
+ * Public: No
+ */
 #include "function_macros.hpp"
 params[
 	["_profileIndex", 0, [0]]

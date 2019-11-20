@@ -21,8 +21,9 @@
 params[["_showResult", true, [true]]];
 
 LOG("Saving SR Settings");
-_settings = (call TFAR_fnc_activeSwRadio) call TFAR_fnc_getSwSettings;
-[false, _settings] call FUNC(setRadioData);
+_radioData = (call TFAR_fnc_activeSwRadio) call TFAR_fnc_getSwSettings;
+[false, _radioData] call FUNC(setRadioData);
+
 if(_showResult) then {
 	["Saved SR Settings", QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
 };

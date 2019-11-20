@@ -6,7 +6,7 @@
  * 
  *
  * Arguments:
- * _showResult (optional): If true will display a message at the top right using ace_common_fnc_displayTextPicture on success
+ * 0: _showResult (optional): If true will display a message at the top right using ace_common_fnc_displayTextPicture on success
  *
  * Return Value:
  * None
@@ -19,14 +19,15 @@
 #include "function_macros.hpp"
 
 params[["_showResult", true, [true]]];
+
 LOG("Loading SR Settings");
-_settings = [false] call FUNC(getRadioData);
-if(count _settings == 0) exitWith {
+_radioData = [false] call FUNC(getRadioData);
+if(count _radioData == 0) exitWith {
 	LOG_ERROR("Cannot load unset SR settings");
 	1
 };
-[(call TFAR_fnc_activeSwRadio), _settings] call TFAR_fnc_setSwSettings;
-LOG(format["Loading SR Settings: %1", _settings]);
+[(call TFAR_fnc_activeSwRadio), _radioData] call TFAR_fnc_setSwSettings;
+LOG(format["Loading SR Settings: %1", _radioData]);
 if(_showResult) then {
 	["Loaded SR Settings", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
 };

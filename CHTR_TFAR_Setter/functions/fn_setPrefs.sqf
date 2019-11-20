@@ -1,8 +1,24 @@
+/*
+ * Author: M3ales
+ * Modifies a single preference entry, intialises preferences if unset
+ *
+ * Arguments:
+ * 0: index of preference in _prefs array <INTEGER>
+ * 1: value to set the preference to <ANY>
+ *
+ * Return Value:
+ * None
+ *
+ * Example:
+ * [0, true] call CHTR_TFAR_Setter_fnc_setPrefs
+ *
+ * Public: No
+ */
 #include "function_macros.hpp"
 #include "defaults.hpp"
 params[["_index", 0, [0]], ["_value", true, [true]]];
 if(_index < 0 || _index >= count PREFS_DEFAULT) exitWith {
-	LOG_ERROR(format["Index %1 out of range at fnc_setPrefs.sqf", _index]);
+	LOG_ERROR(format[QUOTE(Index %1 out of range at __FILE__), _index]);
 	[]
 };
 

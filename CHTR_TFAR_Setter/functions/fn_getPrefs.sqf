@@ -1,3 +1,18 @@
+/*
+ * Author: M3ales
+ * Gets one of the preference items from settings gvar, initialises to defaults if unset
+ *
+ * Arguments:
+ * 0: integer index of the preference requesting to be read <INTEGER>
+ *
+ * Return Value:
+ * The preference at the specified index
+ *
+ * Example:
+ * [0] call CHTR_TFAR_Setter_fnc_getPrefs
+ *
+ * Public: No
+ */
 #include "function_macros.hpp"
 #include "defaults.hpp"
 params[["_index", 0, [0]]];

@@ -1,2 +1,3 @@
- #include "function_macros.hpp"
-[0] call FUNC(getPrefs);
+#include "function_macros.hpp"
+#include "defaults.hpp"
+[SHOWLR_INDEX] call FUNC(getPrefs);

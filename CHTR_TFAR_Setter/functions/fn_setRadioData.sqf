@@ -1,3 +1,18 @@
+/*
+ * Author: M3ales
+ * Sets LR/SR data of current profile
+ *
+ * Arguments:
+ * 0: LR or SR, LR is true (default:true) <BOOLEAN>
+ * 1: Data to be saved (default: []) <ARRAY>
+ * Return Value:
+ * None
+ *
+ * Example:
+ * [true, []] call CHTR_TFAR_Setter_fnc_setRadioData
+ *
+ * Public: No
+ */
 #include "function_macros.hpp"
 
 params[
@@ -7,11 +22,11 @@ params[
 
 _index = 2;
 if(!_lr) then {
-	LOG("Updating SR Radio");
+	LOG("Saving SR Radio Data");
 	_index = 3;
 }else
 {
-	LOG("Updating LR Radio");
+	LOG("Saving LR Radio Data");
 };
 
 _settings = call FUNC(loadSettings);

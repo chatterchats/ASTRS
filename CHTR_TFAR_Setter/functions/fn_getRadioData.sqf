@@ -1,3 +1,18 @@
+/*
+ * Author: M3ales
+ * Gets either LR or SR radio data from the settings array and returns it
+ *
+ * Arguments:
+ * 0: LR if true, SR if False <BOOLEAN>
+ *
+ * Return Value:
+ * TFAR Radio Data <ARRAY>
+ *
+ * Example:
+ * [true] call CHTR_TFAR_Setter_fnc_getRadioData
+ *
+ * Public: No
+ */
 #include "function_macros.hpp"
 params[
 	["_lr", true, [true]]
