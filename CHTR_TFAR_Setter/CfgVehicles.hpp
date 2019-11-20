@@ -63,7 +63,7 @@ class CfgVehicles {
 					class Save_Root {
 						displayName = "Save";
 						statement = "";
-						condition = QUOTE(ALTERNATE_LAYOUT);
+						condition = QUOTE(ALTERNATE_LAYOUT && (SHOW_LR || SHOW_SR) && (HAS_LR || HAS_SR));
 						icon = QUOTE(ICON_PATH(save));
 						class Save_LR {
 							displayName = "LR";
@@ -83,7 +83,7 @@ class CfgVehicles {
 						displayName = "Load";
 						icon = QUOTE(ICON_PATH(load));
 						statement = QUOTE(if(SHORTCUT_ENABLED) then {[true] call FUNC(loadBothSettings)};);
-						condition = QUOTE(ALTERNATE_LAYOUT);
+						condition = QUOTE(ALTERNATE_LAYOUT && (HAS_LR || HAS_SR));
 						class Load_LR {
 							displayName = "LR";
 							icon = QUOTE(ICON_PATH(lr));
