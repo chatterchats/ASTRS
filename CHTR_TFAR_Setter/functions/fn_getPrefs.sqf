@@ -1,8 +1,8 @@
 #include "function_macros.hpp"
 #include "defaults.hpp"
 params[["_index", 0, [0]]];
-if(_index < 0 || _index > 2) exitWith {
-	LOG_ERROR(format["Index %1 out of range at fnc_getPrefs.sqf", _index]);
+if(_index < 0 || _index >= count PREFS_DEFAULT) exitWith {
+	LOG_ERROR(format[QUOTE(Index %1 out of range at __FILE__), _index]);
 	[]
 };
 _settings = call FUNC(loadSettings);
