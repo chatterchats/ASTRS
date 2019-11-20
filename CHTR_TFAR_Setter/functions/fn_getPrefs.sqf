@@ -14,7 +14,7 @@ _currentProfile = _settings select _profileIndex;
 
 _prefs = _currentProfile select 4;
 if(count _prefs == 0) then {
-	LOG("Init Prefs");
+	LOG("Prefs empty, Initialising to defaults");
 	_prefs append [true, true, false];
 };
 

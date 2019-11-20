@@ -19,7 +19,7 @@
 #include "function_macros.hpp"
 
 params[["_showResult", true, [true]]];
-
+LOG("Loading SR Settings");
 _settings = [false] call FUNC(getRadioData);
 if(count _settings == 0) exitWith {
 	LOG_ERROR("Cannot load unset SR settings");

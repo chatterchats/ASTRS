@@ -20,6 +20,7 @@
 
 params[["_showResult", true, [true]]];
 
+LOG("Loading LR and SR Settings");
 _resultLR = [false] call FUNC(loadLRSettings);
 _resultSR = [false] call FUNC(loadSRSettings);
 if(_resultLR == 0 && _resultSR == 0) then {

@@ -30,6 +30,7 @@ class CfgFunctions {
 			class getRadioData {};
 			class setRadioData {};
 			class loadSettings {};
+			class setProfile {};
         };
 	};
 };

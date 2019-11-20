@@ -5,12 +5,13 @@ params[
 	["_value", [], [[]]]
 ];
 
-_log = format["Updating Radio (LR: %1) to: %2", _lr, _value];
-LOG(_log);
-
 _index = 2;
 if(!_lr) then {
+	LOG("Updating SR Radio");
 	_index = 3;
+}else
+{
+	LOG("Updating LR Radio");
 };
 
 _settings = call FUNC(loadSettings);
