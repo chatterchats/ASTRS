@@ -82,7 +82,7 @@ class CfgVehicles {
 					class Load_Root {
 						displayName = "Load";
 						icon = QUOTE(ICON_PATH(load));
-						statement = QUOTE(if(SHORTCUT_ENABLED) then {[true] call FUNC(loadBothSettings)};);
+						statement = QUOTE(if(SHORTCUT_ENABLED && SHOW_LR && SHOW_SR) then {[true] call FUNC(loadBothSettings)};);
 						condition = QUOTE(ALTERNATE_LAYOUT && (HAS_LR || HAS_SR));
 						class Load_LR {
 							displayName = "LR";
