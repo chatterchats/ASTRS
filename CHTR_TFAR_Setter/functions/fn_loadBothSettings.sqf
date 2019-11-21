@@ -1,8 +1,7 @@
 /*
  * Authors: Chatter and M3ales
- * Gets the active LR Radio of the Player(call TFAR_fnc_activeLrRadio)
- * Sets the  radio to have the settings of CHTR_TFAR_QoL_SettingsLR by loading them from the private variable of "_settings"
- * Outputs "Loaded LR Settings" as an indication of what was done.
+ * Calls loadLRSettings and loadSRSettings to load both radios.
+ * Outputs "Loaded LR and SR Settings" in a hint as an indication of what was done.
  * 
  *
  * Arguments:
@@ -12,7 +11,7 @@
  * None
  *
  * Example:
- * call CHTR_TFAR_Setter_fnc_loadLRSettings
+ * [true] call CHTR_TFAR_Setter_fnc_loadBothSettings
  *
  * Public: No
  */

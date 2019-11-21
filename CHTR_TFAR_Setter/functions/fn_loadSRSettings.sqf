@@ -1,8 +1,8 @@
 /*
  * Authors: Chatter and M3ales
- * Gets the active SR Radio of the Player(call TFAR_fnc_activeSwRadio)
- * Sets the  radio to have the settings of CHTR_TFAR_QoL_SettingsSR by loading them from the private variable of "_settings"
- * Outputs "Loaded SR Settings" as an indication of what was done.
+ * calls getRadioData with false to _radioData to get Short Range data if any and checks to make sure it is not empty
+ * Loads _radioData to currently equipped SR.
+ * Outputs "Loaded SR Settings" in a hint as an indication of what was done.
  * 
  *
  * Arguments:

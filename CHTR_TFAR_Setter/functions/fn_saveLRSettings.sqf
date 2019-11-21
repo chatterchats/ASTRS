@@ -1,8 +1,8 @@
 /*
  * Authors: Chatter and M3ales
- * Gets the active LR Radio of the Player(TFAR_fnc_activeLrRadio)
- * Sets the profileNamespace variable "CHTR_TFAR_QoL_SettingsLR" to have the settings of current raido by calling "TFAR_fnc_getLrSettings"
- * Outputs "SaveLR Settings" as an indication of what was done.
+ * Saves current Long Range radio data to _radioData,
+ * Pushes _radio data to setRadioData with TRUE to save Long Trange
+ * Outputs "Saved SR Settings" in a hint as an indication of what was done.
  * 
  *
  * Arguments:
@@ -12,7 +12,7 @@
  * None
  *
  * Example:
- * call CHTR_TFAR_Setter_fnc_saveLRSettings
+ * [true] call CHTR_TFAR_Setter_fnc_saveLRSettings
  *
  * Public: No
  */
