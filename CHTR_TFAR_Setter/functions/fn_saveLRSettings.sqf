@@ -20,11 +20,12 @@
 
 params[["_showResult", true, [true]]];
 
-_settings = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings;
-profileNamespace setVariable [QUOTE(PROFILESETTINGS_LR) , _settings];
-diag_log format["Saving LR Settings: %1", _settings];
+LOG("Saving LR Settings");
+_radioData = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings;
+[true, _radioData] call FUNC(setRadioData);
+
 if(_showResult) then {
 	["Saved LR Settings", QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
 };
 //check it saved correctly, return result
-profileNamespace getVariable QUOTE(PROFILESETTINGS_LR) == _settings
+0

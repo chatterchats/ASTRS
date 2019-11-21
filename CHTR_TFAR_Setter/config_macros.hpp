@@ -5,3 +5,4 @@
 #define FUNCTION_PATH ADDON##\functions
 #define ICON_PATH(icon_name) ADDON##\ui\##icon_name##.paa
 #define COMPILE_FILE(name) compile preprocessFileLineNumbers 'ADDON\##name##.sqf'
+#define GVAR(name) ADDON##_##name

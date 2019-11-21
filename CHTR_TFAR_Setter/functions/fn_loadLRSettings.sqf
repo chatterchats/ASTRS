@@ -20,13 +20,14 @@
 
 params[["_showResult", true, [true]]];
 
-_settings = profileNamespace getVariable [QUOTE(PROFILESETTINGS_LR), []];
-if(count _settings == 0) exitWith {
-	diag_log "Cannot load unset LR settings";
+LOG("Loading LR Settings");
+_radioData = [true] call FUNC(getRadioData);
+if(count _radioData == 0) exitWith {
+	LOG_ERROR("Cannot load unset LR settings");
 	1
 };
-[(call TFAR_fnc_activeLrRadio) select 0, (call TFAR_fnc_activeLrRadio) select 1, _settings] call TFAR_fnc_setLrSettings;
-diag_log format["Loading LR Settings: %1", _settings];
+[(call TFAR_fnc_activeLrRadio) select 0, (call TFAR_fnc_activeLrRadio) select 1, _radioData] call TFAR_fnc_setLrSettings;
+LOG(format["Loading LR Settings: %1", _radioData]);
 if(_showResult) then {
 	["Loaded LR Settings", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
 };

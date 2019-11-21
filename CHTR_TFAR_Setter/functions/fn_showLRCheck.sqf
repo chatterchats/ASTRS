@@ -1,2 +1,3 @@
- #include "function_macros.hpp"
- profileNamespace getVariable [QUOTE(PROFILESETTINGS_PREF_LR), true];
+#include "function_macros.hpp"
+#include "defaults.hpp"
+[SHOWLR_INDEX] call FUNC(getPrefs);
