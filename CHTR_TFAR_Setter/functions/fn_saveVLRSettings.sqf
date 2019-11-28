@@ -1,7 +1,7 @@
 /*
  * Authors: Chatter and M3ales
- * Saves current Short Range radio data to _radioData,
- * Pushes _radioData to setRadioData with FALSE to save Short Range data.
+ * Saves current Long Range radio data to _radioData,
+ * Pushes _radio data to setRadioData with TRUE to save Long Trange
  * Outputs "Saved SR Settings" in a hint as an indication of what was done.
  * 
  *
@@ -12,7 +12,7 @@
  * None
  *
  * Example:
- * call CHTR_TFAR_Setter_fnc_saveLRSettings
+ * [true] call CHTR_TFAR_Setter_fnc_saveLRSettings
  *
  * Public: No
  */
@@ -20,12 +20,12 @@
 
 params[["_showResult", true, [true]]];
 
-LOG("Saving SR Settings");
-_radioData = (call TFAR_fnc_activeSwRadio) call TFAR_fnc_getSwSettings;
-[3, _radioData] call FUNC(setRadioData);
+LOG("Saving Vehicle LR Settings");
+_radioData = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings;
+[5, _radioData] call FUNC(setRadioData);
 
 if(_showResult) then {
-	["Saved SR Settings", QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
+	["Saved Vehicle LR Settings", QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
 };
 //check it saved correctly, return result
 0

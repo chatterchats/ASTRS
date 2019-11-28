@@ -19,6 +19,8 @@ class CfgFunctions {
             file = FUNCTION_PATH;
 			class loadLRSettings {};
 			class saveLRSettings {};
+			class loadVLRSettings {};
+			class saveVLRSettings {};
 			class loadSRSettings {};
 			class saveSRSettings {};
 			class showLRCheck {};

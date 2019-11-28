@@ -15,7 +15,7 @@
  */
 #include "function_macros.hpp"
 params[
-	["_lr", true, [true]]
+	["_radio", 2, [1.0]]
 ];
 
 _settings = call FUNC(loadSettings);
@@ -26,9 +26,12 @@ if(count _settings == 0) exitWith {
 _profileIndex = (_settings select 0) + 1;
 _currentProfile = _settings select _profileIndex;
 
-_index = 2;
-if(!_lr) then {
-	_index = 3;
-};
-
-_currentProfile select _index
+/*if(_radio = 3) then {
+	LOG("Fetching SR Radio Data");
+}else if(_radio = 2) then {
+	LOG("Fetching LR Radio Data");
+}else
+{
+	LOG("Fetching Vehicle LR Radio Data");
+};*/
+_currentProfile select _radio;

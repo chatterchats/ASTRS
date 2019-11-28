@@ -3,7 +3,7 @@
  * Sets LR/SR data of current profile
  *
  * Arguments:
- * 0: LR or SR, LR is true (default:true) <BOOLEAN>
+ * 0: LR or SR, LR is true (default:2) <INTEGER>
  * 1: Data to be saved (default: []) <ARRAY>
  * Return Value:
  * None
@@ -16,18 +16,17 @@
 #include "function_macros.hpp"
 
 params[
-	["_lr", true, [true]],
+	["_radio", 2, [1.0]],
 	["_value", [], [[]]]
 ];
 
-_index = 2;
-if(!_lr) then {
-	LOG("Saving SR Radio Data");
-	_index = 3;
-}else
-{
-	LOG("Saving LR Radio Data");
-};
+/*if(_radio = 3) then {
+	LOG("Pushing SR Radio Data");
+}else if(_radio = 2 ){
+	LOG("Pushing LR Radio Data");
+}else{
+	LOG("Pushing Vehicle LR Radio Data");
+};*/
 
 _settings = call FUNC(loadSettings);
 if(count _settings == 0) exitWith {
@@ -35,4 +34,4 @@ if(count _settings == 0) exitWith {
 };
 _profileIndex = (_settings select 0) + 1;
 _currentProfile = _settings select _profileIndex;
-_currentProfile set [_index, _value];
+_currentProfile set [_radio, _value];

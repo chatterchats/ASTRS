@@ -21,14 +21,14 @@
 params[["_showResult", true, [true]]];
 
 LOG("Loading LR Settings");
-_radioData = [3] call FUNC(getRadioData);
+_radioData = [5] call FUNC(getRadioData);
 if(count _radioData == 0) exitWith {
 	LOG_ERROR("Cannot load unset LR settings");
 	1
 };
 [(call TFAR_fnc_activeLrRadio) select 0, (call TFAR_fnc_activeLrRadio) select 1, _radioData] call TFAR_fnc_setLrSettings;
-LOG(format["Loading LR Settings: %1", _radioData]);
+LOG(format["Loading Vehicle LR Settings: %1", _radioData]);
 if(_showResult) then {
-	["Loaded LR Settings", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
+	["Loaded Vehicle LR Settings", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
 };
 0

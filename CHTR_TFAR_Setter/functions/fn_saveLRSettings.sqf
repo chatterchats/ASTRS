@@ -22,7 +22,7 @@ params[["_showResult", true, [true]]];
 
 LOG("Saving LR Settings");
 _radioData = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings;
-[true, _radioData] call FUNC(setRadioData);
+[2, _radioData] call FUNC(setRadioData);
 
 if(_showResult) then {
 	["Saved LR Settings", QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
