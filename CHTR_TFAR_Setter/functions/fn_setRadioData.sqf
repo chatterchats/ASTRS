@@ -3,7 +3,7 @@
  * Sets LR/SR data of current profile
  *
  * Arguments:
- * 0: LR or SR, LR is true (default:2) <INTEGER>
+ * 0: LR, SR, or vehicleLR (2, 3, 5) (default:2) <INTEGER>
  * 1: Data to be saved (default: []) <ARRAY>
  * Return Value:
  * None

@@ -1,6 +1,6 @@
 /*
  * Authors: Chatter and M3ales
- * calls getRadioData with true to _radioData to get Long Range data if any and checks to make sure it is not empty
+ * calls getRadioData with true to _radioData to get Vehicle Long Range data if any and checks to make sure it is not empty
  * Loads _radioData to currently equipped SR.
  * Outputs "Loaded SR Settings" in a hint as an indication of what was done.
  * 

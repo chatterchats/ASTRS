@@ -3,7 +3,7 @@
  * Gets either LR or SR radio data from the settings array and returns it
  *
  * Arguments:
- * 0: LR if true, SR if False <BOOLEAN>
+ * 0: LR, SR, or vehicleLR (2, 3, 5) (default:2) <INTEGER>
  *
  * Return Value:
  * TFAR Radio Data <ARRAY>

@@ -1,8 +1,8 @@
 /*
  * Authors: Chatter and M3ales
- * Saves current Long Range radio data to _radioData,
- * Pushes _radio data to setRadioData with TRUE to save Long Trange
- * Outputs "Saved SR Settings" in a hint as an indication of what was done.
+ * Saves current Active Vehicle Long Range radio data to _radioData,
+ * Pushes _radio data to setRadioData with 5 to save Vehicle Long Range
+ * Outputs "Saved Vehicle LR Settings" in a hint as an indication of what was done.
  * 
  *
  * Arguments:
