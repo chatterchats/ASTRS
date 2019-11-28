@@ -21,7 +21,7 @@
 params[["_showResult", true, [true]]];
 
 LOG("Loading LR Settings");
-_radioData = [3] call FUNC(getRadioData);
+_radioData = [2] call FUNC(getRadioData);
 if(count _radioData == 0) exitWith {
 	LOG_ERROR("Cannot load unset LR settings");
 	1

@@ -110,26 +110,24 @@ class CfgVehicles {
     class Air;
     class Helicopter: Air {
         class ACE_SelfActions {
-			ACE_Equipment{
-				class ADDON {	
-					displayName = "TFAR Setter";
-					icon = QUOTE(ICON_PATH(interact_root));
-					//Original Layout, ALTERNATE_LAYOUT = False
-					class LR_Root {
-						displayName = "Vehicle LR";
-						icon = QUOTE(ICON_PATH(lr));
-						statement = QUOTE(if(SHORTCUT_ENABLED) then {[true] call FUNC(loadLRSettings)};);
-						condition = QUOTE(SHOW_LR && && HAS_LR);
-						class LR_Load {
-							icon = QUOTE(ICON_PATH(load));
-							statement = QUOTE([true] call FUNC(loadVLRSettings));
-							displayName = "Load";
-						};
-						class LR_Save {
-							icon = QUOTE(ICON_PATH(save));
-							statement = QUOTE([true] call FUNC(saveVLRSettings));
-							displayName = "Save";
-						};
+			class ADDON {	
+				displayName = "TFAR Setter";
+				icon = QUOTE(ICON_PATH(interact_root));
+				//Original Layout, ALTERNATE_LAYOUT = False
+				class LR_Root {
+					displayName = "Vehicle LR";
+					icon = QUOTE(ICON_PATH(lr));
+					statement = QUOTE(if(SHORTCUT_ENABLED) then {[true] call FUNC(loadLRSettings)};);
+					condition = QUOTE(SHOW_LR && && HAS_LR);
+					class LR_Load {
+						icon = QUOTE(ICON_PATH(load));
+						statement = QUOTE([true] call FUNC(loadVLRSettings));
+						displayName = "Load";
+					};
+					class LR_Save {
+						icon = QUOTE(ICON_PATH(save));
+						statement = QUOTE([true] call FUNC(saveVLRSettings));
+						displayName = "Save";
 					};
 				};
 			};
