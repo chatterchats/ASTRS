@@ -4,6 +4,10 @@
  *
  * Arguments:
  * 0: LR, SR, or vehicleLR (2, 3, 5) (default:2) <INTEGER>
+<<<<<<< HEAD
+=======
+
+>>>>>>> vehicleTesting
  *
  * Return Value:
  * TFAR Radio Data <ARRAY>
@@ -16,6 +20,10 @@
 #include "function_macros.hpp"
 params[
 	["_radio", 2, [1.0]]
+<<<<<<< HEAD
+=======
+
+>>>>>>> vehicleTesting
 ];
 
 _settings = call FUNC(loadSettings);

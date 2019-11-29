@@ -22,6 +22,10 @@ params[["_showResult", true, [true]]];
 
 LOG("Loading SR Settings");
 _radioData = [3] call FUNC(getRadioData);
+<<<<<<< HEAD
+=======
+
+>>>>>>> vehicleTesting
 if(count _radioData == 0) exitWith {
 	LOG_ERROR("Cannot load unset SR settings");
 	1

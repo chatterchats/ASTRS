@@ -4,6 +4,10 @@
  *
  * Arguments:
  * 0: LR, SR, or vehicleLR (2, 3, 5) (default:2) <INTEGER>
+<<<<<<< HEAD
+=======
+
+>>>>>>> vehicleTesting
  * 1: Data to be saved (default: []) <ARRAY>
  * Return Value:
  * None
@@ -27,6 +31,10 @@ params[
 }else{
 	LOG("Pushing Vehicle LR Radio Data");
 };*/
+<<<<<<< HEAD
+=======
+
+>>>>>>> vehicleTesting
 
 _settings = call FUNC(loadSettings);
 if(count _settings == 0) exitWith {
@@ -34,4 +42,8 @@ if(count _settings == 0) exitWith {
 };
 _profileIndex = (_settings select 0) + 1;
 _currentProfile = _settings select _profileIndex;
+<<<<<<< HEAD
 _currentProfile set [_radio, _value];
+=======
+_currentProfile set [_radio, _value];
+>>>>>>> vehicleTesting

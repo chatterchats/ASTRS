@@ -71,6 +71,7 @@ class CfgVehicles {
 							statement = QUOTE([true] call FUNC(saveLRSettings));
 							condition = QUOTE(ALTERNATE_LAYOUT && SHOW_LR && HAS_LR);
 						};
+            
 						class Save_SR {
 							icon = QUOTE(ICON_PATH(sr));
 							displayName = "SR";
@@ -78,24 +79,32 @@ class CfgVehicles {
 							condition = QUOTE(ALTERNATE_LAYOUT && SHOW_SR && HAS_SR);
 						};
 					};
+          
 					//New Layout, ALTERNATE_LAYOUT = True
 					class Load_Root {
 						displayName = "Load";
 						icon = QUOTE(ICON_PATH(load));
 						statement = QUOTE(if(SHORTCUT_ENABLED && SHOW_LR && SHOW_SR) then {[true] call FUNC(loadBothSettings)};);
+<<<<<<< HEAD
 						condition = QUOTE(ALTERNATE_LAYOUT);
+=======
+            condition = QUOTE(ALTERNATE_LAYOUT);
+
+>>>>>>> vehicleTesting
 						class Load_LR {
 							displayName = "LR";
 							icon = QUOTE(ICON_PATH(lr));
 							statement = QUOTE([true] call FUNC(loadLRSettings));
 							condition = QUOTE(ALTERNATE_LAYOUT && (SHOW_LR) && HAS_LR);
 						};
+            
 						class Load_SR {
 							displayName = "SR";
 							icon = QUOTE(ICON_PATH(sr));
 							statement = QUOTE([true] call FUNC(loadSRSettings));
 							condition = QUOTE(ALTERNATE_LAYOUT && SHOW_SR && HAS_sR);
 						};
+            
 						class Load_Both {
 							displayName = "Both";
 							icon = QUOTE(ICON_PATH(interact_root));
