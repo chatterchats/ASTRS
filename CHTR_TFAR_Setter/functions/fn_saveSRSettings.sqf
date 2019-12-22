@@ -23,10 +23,6 @@ params[["_showResult", true, [true]]];
 LOG("Saving SR Settings");
 _radioData = (call TFAR_fnc_activeSwRadio) call TFAR_fnc_getSwSettings;
 [3, _radioData] call FUNC(setRadioData);
-<<<<<<< HEAD
-=======
-
->>>>>>> vehicleTesting
 
 if(_showResult) then {
 	["Saved SR Settings", QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;

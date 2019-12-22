@@ -12,7 +12,7 @@
  * None
  *
  * Example:
- * [true] call CHTR_TFAR_Setter_fnc_loadLRSettings
+ * [true] call CHTR_TFAR_Setter_fnc_loadVLRSettings
  *
  * Public: No
  */
@@ -22,6 +22,7 @@ params[["_showResult", true, [true]]];
 
 LOG("Loading LR Settings");
 _radioData = [5] call FUNC(getRadioData);
+
 if(count _radioData == 0) exitWith {
 	LOG_ERROR("Cannot load unset LR settings");
 	1

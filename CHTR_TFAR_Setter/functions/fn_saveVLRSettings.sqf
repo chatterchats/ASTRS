@@ -12,7 +12,7 @@
  * None
  *
  * Example:
- * [true] call CHTR_TFAR_Setter_fnc_saveLRSettings
+ * [true] call CHTR_TFAR_Setter_fnc_saveVLRSettings
  *
  * Public: No
  */

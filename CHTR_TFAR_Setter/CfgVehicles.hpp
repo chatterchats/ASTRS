@@ -85,12 +85,8 @@ class CfgVehicles {
 						displayName = "Load";
 						icon = QUOTE(ICON_PATH(load));
 						statement = QUOTE(if(SHORTCUT_ENABLED && SHOW_LR && SHOW_SR) then {[true] call FUNC(loadBothSettings)};);
-<<<<<<< HEAD
-						condition = QUOTE(ALTERNATE_LAYOUT);
-=======
-            condition = QUOTE(ALTERNATE_LAYOUT);
+           				condition = QUOTE(ALTERNATE_LAYOUT && (HAS_LR || HAS_SR));
 
->>>>>>> vehicleTesting
 						class Load_LR {
 							displayName = "LR";
 							icon = QUOTE(ICON_PATH(lr));
@@ -117,6 +113,8 @@ class CfgVehicles {
 		};
     };
     class Air;
+	class Plane: Air;
+	
     class Helicopter: Air {
         class ACE_SelfActions {
 			class ADDON {	
@@ -142,4 +140,32 @@ class CfgVehicles {
 			};
 		};
 	};
+	
+	class Plane_Base_F: Plane{
+		class ACE_SelfActions {
+			class ADDON {	
+				displayName = "TFAR Setter";
+				icon = QUOTE(ICON_PATH(interact_root));
+				//Original Layout, ALTERNATE_LAYOUT = False
+				class LR_Root {
+					displayName = "Vehicle LR";
+					icon = QUOTE(ICON_PATH(lr));
+					statement = QUOTE(if(SHORTCUT_ENABLED) then {[true] call FUNC(loadLRSettings)};);
+					condition = QUOTE(SHOW_LR && && HAS_LR);
+					class LR_Load {
+						icon = QUOTE(ICON_PATH(load));
+						statement = QUOTE([true] call FUNC(loadVLRSettings));
+						displayName = "Load";
+					};
+					class LR_Save {
+						icon = QUOTE(ICON_PATH(save));
+						statement = QUOTE([true] call FUNC(saveVLRSettings));
+						displayName = "Save";
+					};
+				};
+			};
+		};
+	};
+		
+
 };
