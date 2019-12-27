@@ -30,7 +30,7 @@ if(count _settings == 0) exitWith {
 	LOG_ERROR(QUOTE(GVAR(SETTINGS) not initialised));
 	false
 };
-_profileIndex = (_settings select CURRENTPROFILE_INDEX) + 1;
+_profileIndex = (_settings select CURRENTPROFILE_ID) + 1;
 _currentProfile = _settings select _profileIndex; //Selects profile
 
 LOG("Testing LR/SR Radio Set");
@@ -40,7 +40,7 @@ if(!_lr && !_vlr) exitWith {
 	true
 };
 if(_lr || _vlr) exitWith {
-	_current = call TFAR_fnc_getActiveLR; //current active radio
+	_currentLR = call TFAR_fnc_getActiveLR; //current active radio
 	_lrProfile = _currentProfile select LRDATA_INDEX; //DATA = LR/SR
 	_lrIndex = LR_INDEX; //different LR_INDEX, this one refers to LR/VLR not LR/SR
 	LOG("Testing VLR or LR Radio Get");
@@ -49,15 +49,15 @@ if(_lr || _vlr) exitWith {
 	} else {
 		LOG("Saving Vehicle LR Data");
 
-		_vehicle = call TFAR_fnc_vehicleLR; //current vehicle's radio
+		_vehicleLR = call TFAR_fnc_vehicleLR; //current vehicle's radio
 		_lrIndex = VLR_INDEX;
 
-		if (_current != _vehicle) {
-			_vehRadio call TFAR_fnc_setActiveLRRadio; //swap to vehicle lr to edit
+		if (_currentLR != _vehicleLR) then {
+			_vehicleLR call TFAR_fnc_setActiveLRRadio; //swap to vehicle lr to edit
 		};
 	};
 	_lrProfile set [_lrIndex, _value];
-	_current call TFAR_fnc_setActiveLRRadio; //swap back to original radio
+	_currentLR call TFAR_fnc_setActiveLRRadio; //swap back to original radio
 	true
 };
 LOG_ERROR("Unsupported Operation -- Cannot save Vehicle Short Range Radio");

@@ -26,14 +26,16 @@ if(count _settings == 0) exitWith {
 	LOG_ERROR(QUOTE(GVAR(SETTINGS) not initialised));
 	[]
 };
-_profileIndex = (_settings select CURRENTPROFILE_INDEX) + 1;
+_profileIndex = (_settings select CURRENTPROFILE_ID) + 1;
 _currentProfile = _settings select _profileIndex;
 
 LOG("Testing LR/SR Radio Get");
+
 if(!_lr && !_vlr) exitWith {
 	LOG("Getting SR Radio Data");
 	_currentProfile select SRDATA_INDEX
-}
+};
+
 if(_lr || _vlr) exitWith {
 	LOG("Testing VLR or LR Radio Get");
 	_currentLR = call TFAR_fnc_activeLRRadio; //current active radioChannelAdd

@@ -9,7 +9,7 @@
  * 0: _showResult (optional): If true will display a message at the top right using ace_common_fnc_displayTextPicture on success
  *
  * Return Value:
- * None
+ * 0 if successful, 1 if error
  *
  * Example:
  * call CHTR_TFAR_Setter_fnc_loadLRSettings

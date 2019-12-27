@@ -27,15 +27,18 @@ _type = "LR";
 if(_vlr) then {
 	_type = "VLR";
 };
-LOG(format["Loading %1 Settings", _vlr]);
+
+LOG(format["Loading %1 Settings", _type]);
+
 _radioData = [true, _vlr] call FUNC(getRadioData);
 if(count _radioData == 0) exitWith {
 	LOG_ERROR(format["Cannot load empty %1 radioData", _type]);
 	1
 };
-[(call TFAR_fnc_activeLrRadio) select 0, (call TFAR_fnc_activeLrRadio) select 1, _radioData] call TFAR_fnc_setLrSettings;
+_activeRadio = [] call TFAR_fnc_activeLrRadio;
+[_activeRadio select 0, _activeRadio select 1, _radioData] call TFAR_fnc_setLrSettings;
 LOG(format["Loading %1 Settings: %2", _type, _radioData]);
 if(_showResult) then {
-	[format["Loading %1 Settings", _vlr], QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
+	[format["Loading %1 Settings", _type], QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
 };
 0
