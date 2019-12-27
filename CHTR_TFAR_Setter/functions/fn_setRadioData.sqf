@@ -8,7 +8,7 @@
  * 2: Data to be saved (default: []) <ARRAY>
  
  * Return Value:
- * None
+ * True if successful, false if unsuccessful
  *
  * Example:
  * [false, []] call CHTR_TFAR_Setter_fnc_setRadioData - SR
@@ -28,6 +28,7 @@ params[
 _settings = call FUNC(loadSettings);
 if(count _settings == 0) exitWith {
 	LOG_ERROR(QUOTE(GVAR(SETTINGS) not initialised));
+	false
 };
 _profileIndex = (_settings select CURRENTPROFILE_INDEX) + 1;
 _currentProfile = _settings select _profileIndex; //Selects profile
@@ -36,6 +37,7 @@ LOG("Testing LR/SR Radio Set");
 if(!_lr && !_vlr) exitWith {
 	LOG("Saving SR Radio Data");
 	_currentProfile set [SRDATA_INDEX, _value];
+	true
 };
 if(_lr || _vlr) exitWith {
 	_current = call TFAR_fnc_getActiveLR; //current active radio
@@ -56,6 +58,7 @@ if(_lr || _vlr) exitWith {
 	};
 	_lrProfile set [_lrIndex, _value];
 	_current call TFAR_fnc_setActiveLRRadio; //swap back to original radio
+	true
 };
 LOG_ERROR("Unsupported Operation -- Cannot save Vehicle Short Range Radio");
-[]
+false
