@@ -110,33 +110,6 @@ class CfgVehicles {
 
 	//Helicopter ACE interact.
 	class Air;	
-	/* "Working" Class as in the Ace Interact shows Up: 
-	class Helicopter: Air {
-        class ACE_SelfActions {
-			class ADDON {	
-				displayName = "TFAR Setter";
-				icon = QUOTE(ICON_PATH(interact_root));
-				//Original Layout, ALTERNATE_LAYOUT = False
-				class LR_Root {
-					displayName = "Vehicle LR";
-					icon = QUOTE(ICON_PATH(lr));
-					statement = QUOTE(if(SHORTCUT_ENABLED) then {[true] call FUNC(loadVLRSettings)};);
-					condition = QUOTE(SHOW_LR && HAS_LR);
-					class LR_Load {
-						icon = QUOTE(ICON_PATH(load));
-						statement = QUOTE([true] call FUNC(loadVLRSettings));
-						displayName = "Load";
-					};
-					class LR_Save {
-						icon = QUOTE(ICON_PATH(save));
-						statement = QUOTE([true] call FUNC(saveVLRSettings));
-						displayName = "Save";
-					};
-				};
-			};
-		};
-	};*/
-	//Working
     class Helicopter: Air {
         class ACE_SelfActions {
 			class ADDON {	
@@ -146,16 +119,16 @@ class CfgVehicles {
 				class LR_Root {
 					displayName = "Vehicle LR";
 					icon = QUOTE(ICON_PATH(lr));
-					statement = QUOTE(if(SHORTCUT_ENABLED) then {[true, true] call FUNC(loadLRSettings)};);
+					statement = QUOTE(if(SHORTCUT_ENABLED) then {[true, true] call CHTR_TFAR_Setter_fnc_loadLRSettings};);
 					condition = QUOTE(SHOW_LR && HAS_LR);
 					class LR_Load {
 						icon = QUOTE(ICON_PATH(load));
-						statement = QUOTE([true, true] call FUNC(loadLRSettings));
+						statement = "[true, true] call CHTR_TFAR_Setter_fnc_loadLRSettings";
 						displayName = "Load";
 					};
 					class LR_Save {
 						icon = QUOTE(ICON_PATH(save));
-						statement = QUOTE([true, true] call FUNC(saveLRSettings));
+						statement = "[true, true] call CHTR_TFAR_Setter_fnc_saveLRSettings";
 						displayName = "Save";
 					};
 				};
