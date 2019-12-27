@@ -29,26 +29,32 @@ _profileIndex = (_settings select 0) + 1;
 _currentProfile = _settings select _profileIndex;
 
 _index = 2;
-_lrProfile = 0;
-_lrIndex = 0;
-LOG(QUOTE(_lr));
 LOG("Testing LR/SR Radio Get");
 if(!_lr) then {
 	LOG("Getting SR Radio Data");
 	_index = 3;
 	_currentProfile select _index;
 } else {
-	LOG(QUOTE(_vlr));
 	LOG("Testing VLR or LR Radio Get");
+
+	_current = call TFAR_fnc_ActiveLRRadio; //current active radio
+	_lrIndex = 0;
 	_lrProfile = _currentProfile select _index;
+
 	if(!_vlr) then {
 		LOG("Getting LR Radio Data");
-		_lrIndex = 0;
+		_lrProfile select _lrIndex;
 	} else {
 		LOG("Getting Vehicle LR Data");
 		_lrIndex = 1;
+		_vehicle = call TFAR_fnc_vehicleLR; //Get current vehicle's radio
+		if (_current == _vehicle) then {
+		} else {
+			_vehRadio call TFAR_fnc_setActiveLRRadio; //swap to vehicle lr to edit
+		};
 	};
 	_lrProfile select _lrIndex;
+	_current call TFAR_fnc_setActiveLRRadio; //swap back to original radio
 };
 
 
