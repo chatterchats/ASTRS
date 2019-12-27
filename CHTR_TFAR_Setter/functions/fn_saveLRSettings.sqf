@@ -22,13 +22,17 @@ params[
 	["_showResult", true, [true]],
 	["_vlr", false, [true]]
 ];
-
-LOG("Saving LR Settings");
+_type = "LR";
 _radioData = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings;
+if(_vlr) then {
+	_type = "VLR";
+	_radioData = (call TFAR_fnc_vehicleLR) call TFAR_fnc_getLrSettings;
+};
+LOG(format["Saving %1 Settings", _type]);
 [true, _vlr, _radioData] call FUNC(setRadioData);
 
 if(_showResult) then {
-	["Saved LR Settings", QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
+	[format["Saved %1 Settings", _type], QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
 };
 //check it saved correctly, return result
 0

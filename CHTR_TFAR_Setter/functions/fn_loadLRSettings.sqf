@@ -23,15 +23,19 @@ params[
 	["_vlr", false, [true]]
 ];
 
-LOG("Loading LR Settings");
+_type = "LR";
+if(_vlr) then {
+	_type = "VLR";
+};
+LOG(format["Loading %1 Settings", _vlr]);
 _radioData = [true, _vlr] call FUNC(getRadioData);
 if(count _radioData == 0) exitWith {
-	LOG_ERROR("Cannot load unset LR settings");
+	LOG_ERROR(format["Cannot load unset %1 settings", _type]);
 	1
 };
 [(call TFAR_fnc_activeLrRadio) select 0, (call TFAR_fnc_activeLrRadio) select 1, _radioData] call TFAR_fnc_setLrSettings;
-LOG(format["Loading LR Settings: %1", _radioData]);
+LOG(format["Loading %1 Settings: %2", _type, _radioData]);
 if(_showResult) then {
-	["Loaded LR Settings", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
+	[format["Loading %1 Settings", _vlr], QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
 };
 0
