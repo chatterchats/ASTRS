@@ -4,7 +4,6 @@
 #define SHOW_SR call FUNC(showLRCheck)
 #define ALTERNATE_LAYOUT (call FUNC(layoutOptionCheck))
 #define SHORTCUT_ENABLED call FUNC(shortcutEnabledCheck)
-#include "config_macros.hpp"
 
 class CfgVehicles {
     class Man;
