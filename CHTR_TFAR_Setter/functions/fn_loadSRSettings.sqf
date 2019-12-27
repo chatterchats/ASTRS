@@ -23,11 +23,14 @@ params[["_showResult", true, [true]]];
 LOG("Loading SR Settings");
 _radioData = [false, false] call FUNC(getRadioData);
 if(count _radioData == 0) exitWith {
-	LOG_ERROR("Cannot load unset SR settings");
+	if(_showResult) then {
+		["Failed to load SR Settings", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
+	};
+	LOG_ERROR("Cannot load empty SR Settings");
 	1
 };
 [(call TFAR_fnc_activeSwRadio), _radioData] call TFAR_fnc_setSwSettings;
-LOG(format["Loading SR Settings: %1", _radioData]);
+LOG(format["Loaded SR Settings: %1", _radioData]);
 if(_showResult) then {
 	["Loaded SR Settings", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
 };

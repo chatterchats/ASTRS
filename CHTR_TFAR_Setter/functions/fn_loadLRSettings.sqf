@@ -30,7 +30,7 @@ if(_vlr) then {
 LOG(format["Loading %1 Settings", _vlr]);
 _radioData = [true, _vlr] call FUNC(getRadioData);
 if(count _radioData == 0) exitWith {
-	LOG_ERROR(format["Cannot load unset %1 settings", _type]);
+	LOG_ERROR(format["Cannot load empty %1 radioData", _type]);
 	1
 };
 [(call TFAR_fnc_activeLrRadio) select 0, (call TFAR_fnc_activeLrRadio) select 1, _radioData] call TFAR_fnc_setLrSettings;
