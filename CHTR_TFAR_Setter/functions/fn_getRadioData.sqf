@@ -51,7 +51,7 @@ if(_lr || _vlr) exitWith {
 		};
 	};
 	_lrProfile select _lrIndex;
-	_current call TFAR_fnc_setActiveLRRadio; //swap back to original radio
+	_current call TFAR_fnc_setActiveLRRadio //swap back to original radio
 };
 LOG_ERROR("Attempted to load Vehicle Short Range - Unsupported Operation");
 []
