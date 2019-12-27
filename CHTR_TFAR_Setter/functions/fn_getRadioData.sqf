@@ -26,12 +26,12 @@ if(count _settings == 0) exitWith {
 _profileIndex = (_settings select 0) + 1;
 _currentProfile = _settings select _profileIndex;
 
-if(_radio = 3) then {
+/*if(_radio = 3) then {
 	LOG("Fetching SR Radio Data");
-	}else if(_radio = 2) then {
-		LOG("Fetching LR Radio Data");
-	}else{
-		LOG("Fetching Vehicle LR Radio Data");
-};
+}else if(_radio = 2) then {
+	LOG("Fetching LR Radio Data");
+}else{
+	LOG("Fetching Vehicle LR Radio Data");
+};*/
 
 _currentProfile select _index;

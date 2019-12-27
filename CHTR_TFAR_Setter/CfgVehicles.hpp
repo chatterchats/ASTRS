@@ -125,7 +125,7 @@ class CfgVehicles {
 					displayName = "Vehicle LR";
 					icon = QUOTE(ICON_PATH(lr));
 					statement = QUOTE(if(SHORTCUT_ENABLED) then {[true] call FUNC(loadLRSettings)};);
-					condition = QUOTE(SHOW_LR && && HAS_LR);
+					condition = QUOTE(SHOW_LR && HAS_LR);
 					class LR_Load {
 						icon = QUOTE(ICON_PATH(load));
 						statement = QUOTE([true] call FUNC(loadVLRSettings));
@@ -151,7 +151,7 @@ class CfgVehicles {
 					displayName = "Vehicle LR";
 					icon = QUOTE(ICON_PATH(lr));
 					statement = QUOTE(if(SHORTCUT_ENABLED) then {[true] call FUNC(loadLRSettings)};);
-					condition = QUOTE(SHOW_LR && && HAS_LR);
+					condition = QUOTE(SHOW_LR && HAS_LR);
 					class LR_Load {
 						icon = QUOTE(ICON_PATH(load));
 						statement = QUOTE([true] call FUNC(loadVLRSettings));

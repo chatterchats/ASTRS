@@ -20,13 +20,13 @@ params[
 	["_value", [], [[]]]
 ];
 
-if(_radio = 3) then {
+/*if(_radio = 3) then {
 	LOG("Pushing SR Radio Data");
 }else if(_radio = 2 ) then {
 	LOG("Pushing LR Radio Data");
 }else{
 	LOG("Pushing Vehicle LR Radio Data");
-};
+};*/
 
 _settings = call FUNC(loadSettings);
 if(count _settings == 0) exitWith {
