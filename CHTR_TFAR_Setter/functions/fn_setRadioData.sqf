@@ -18,7 +18,7 @@
  * Public: No
  */
 #include "function_macros.hpp"
-
+#include "defaults.hpp"
 params[
 	["_lr", true, [true]],
 	["_vlr", false, [true]],
@@ -29,38 +29,33 @@ _settings = call FUNC(loadSettings);
 if(count _settings == 0) exitWith {
 	LOG_ERROR(QUOTE(GVAR(SETTINGS) not initialised));
 };
-_profileIndex = (_settings select 0) + 1;
+_profileIndex = (_settings select CURRENTPROFILE_INDEX) + 1;
 _currentProfile = _settings select _profileIndex; //Selects profile
 
-
-_index = 2; // (V)LR Index
-
 LOG("Testing LR/SR Radio Set");
-if(!_lr) then {
+if(!_lr && !_vlr) exitWith {
 	LOG("Saving SR Radio Data");
-	_index = 3; // SR Index
-	_currentProfile set [_index, _value];
-} else {
+	_currentProfile set [SRDATA_INDEX, _value];
+};
+if(_lr || _vlr) exitWith {
 	_current = call TFAR_fnc_getActiveLR; //current active radio
-	_lrProfile = _currentProfile select _index;
-	_lrIndex = 0;
+	_lrProfile = _currentProfile select LRDATA_INDEX; //DATA = LR/SR
+	_lrIndex = LR_INDEX; //different LR_INDEX, this one refers to LR/VLR not LR/SR
 	LOG("Testing VLR or LR Radio Get");
-
 	if(!_vlr) then {
 		LOG("Saving LR Radio Data");
 	} else {
 		LOG("Saving Vehicle LR Data");
 
 		_vehicle = call TFAR_fnc_vehicleLR; //current vehicle's radio
-		_lrIndex = 1;
+		_lrIndex = VLR_INDEX;
 
-		if (_current == _vehicle) {
-		} else {
+		if (_current != _vehicle) {
 			_vehRadio call TFAR_fnc_setActiveLRRadio; //swap to vehicle lr to edit
 		};
 	};
 	_lrProfile set [_lrIndex, _value];
 	_current call TFAR_fnc_setActiveLRRadio; //swap back to original radio
-}; 
-
-
+};
+LOG_ERROR("Unsupported Operation -- Cannot save Vehicle Short Range Radio");
+[]
