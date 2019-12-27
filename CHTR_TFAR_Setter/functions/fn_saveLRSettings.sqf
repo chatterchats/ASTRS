@@ -18,11 +18,14 @@
  */
 #include "function_macros.hpp"
 
-params[["_showResult", true, [true]]];
+params[
+	["_showResult", true, [true]],
+	["_vlr", false, [true]]
+];
 
 LOG("Saving LR Settings");
 _radioData = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings;
-[true, _radioData] call FUNC(setRadioData);
+[true, _vlr, _radioData] call FUNC(setRadioData);
 
 if(_showResult) then {
 	["Saved LR Settings", QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;

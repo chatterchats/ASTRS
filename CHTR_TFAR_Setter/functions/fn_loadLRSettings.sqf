@@ -18,10 +18,13 @@
  */
 #include "function_macros.hpp"
 
-params[["_showResult", true, [true]]];
+params[
+	["_showResult", true, [true]],
+	["_vlr", false, [true]]
+];
 
 LOG("Loading LR Settings");
-_radioData = [true] call FUNC(getRadioData);
+_radioData = [true, _vlr] call FUNC(getRadioData);
 if(count _radioData == 0) exitWith {
 	LOG_ERROR("Cannot load unset LR settings");
 	1
