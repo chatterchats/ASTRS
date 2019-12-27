@@ -23,8 +23,11 @@ params[
 	["_vlr", false, [true]]
 ];
 
+LOG("Set LR Saving to Backpack");
 _type = "LR";
 if(_vlr) then {
+	LOG("VLR is True");
+	LOG("Setting LR Saving to Vehicle");
 	_type = "VLR";
 };
 

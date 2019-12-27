@@ -49,6 +49,8 @@ if(_lr || _vlr) exitWith {
 		_lrIndex = VLR_INDEX;
 		_vehicleLR = call TFAR_fnc_vehicleLR; //Get current vehicle's radio
 		if (_currentLR != _vehicleLR) then {
+			LOG("VLR Radio Not Active");
+			LOG("Setting VLR As Active Radio");
 			_vehicleLR call TFAR_fnc_setActiveLRRadio; //swap to vehicle lr to edit
 		};
 	};

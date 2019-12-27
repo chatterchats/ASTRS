@@ -33,7 +33,7 @@ if(count _settings == 0) exitWith {
 _profileIndex = (_settings select CURRENTPROFILE_ID) + 1;
 _currentProfile = _settings select _profileIndex; //Selects profile
 
-LOG("Testing LR/SR Radio Set");
+LOG("Testing Wether LR or SR Radio Will be Set");
 if(!_lr && !_vlr) exitWith {
 	LOG("Saving SR Radio Data");
 	_currentProfile set [SRDATA_INDEX, _value];
