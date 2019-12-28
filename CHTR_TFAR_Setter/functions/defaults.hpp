@@ -13,8 +13,9 @@
 #define SHOWSR_INDEX 1
 #define ALTERNATELAYOUT_INDEX 2
 #define SHORTCUTENABLED_INDEX 3
+#define SHOWVLR_INDEX 4
 //LR Indexes (For lrData Array)
 #define LR_INDEX 0
 #define VLR_INDEX 1
 //[showLR, showSR, alternateLayout, loadShortcutsEnabled]
-#define PREFS_DEFAULT [true, true, false, false]
+#define PREFS_DEFAULT [true, true, false, false, true]
