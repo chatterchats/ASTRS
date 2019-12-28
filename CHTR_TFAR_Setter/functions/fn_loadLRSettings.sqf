@@ -41,7 +41,7 @@ if(count _radioData == 0) exitWith {
     1
 };
 
-if(_vlr && _vehicleLR isEqualType [] && count _vehicleLR > 0) then {
+if(_vlr && ((vehicle player) call TFAR_fnc_hasVehicleRadio)) then {
     [_vehicleLR select 0, _vehicleLR select 1, _radioData] call TFAR_fnc_setLrSettings;
 	LOG("Loading VLR Settings:");
 	LOG(_radioData);
