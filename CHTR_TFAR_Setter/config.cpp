@@ -32,6 +32,7 @@ class CfgFunctions {
 			class loadSettings {};
 			class setProfile {};
 			class copyLegacyRadioData {};
+			class copyLegacyLRData {};
 			class shortcutEnabledCheck {};
         };
 	};
