@@ -42,8 +42,18 @@ if(!_lr && !_vlr) exitWith {
 if(_lr || _vlr) exitWith {
 	_currentLR = player call TFAR_fnc_getActiveLR; //current active radio
 	_currentLRName = _currentLR select 1;
-	_lrProfile = _currentProfile select LRDATA_INDEX; //DATA = LR/SR
-	_lrIndex = LR_INDEX; //different LR_INDEX, this one refers to LR/VLR not LR/SR
+	_lrData = _currentProfile select LRDATA_INDEX; // Where LR and VLR info is stored in an array
+	_lrIndex = LR_INDEX; // Where LR data is inside the array
+	_lrIsArrayofArrays = _lrData isEqualTypeArray [[],[]];
+	
+	if(!(_lrIsArrayofArrays)) then {
+		LOG_ERROR("Old settings layout detected");
+		_lrNewData = call FUNC(copyLegacyLRData);
+		LOG_ERROR("Data Modified into new format");
+		_currentProfile set [LRDATA_INDEX, _lrNewData];
+		LOG_ERROR("New Format Applied");
+	};
+
 	LOG("Testing VLR or LR Radio Get");
 	if(!_vlr) then {
 		LOG("Saving LR Radio Data");
@@ -58,7 +68,9 @@ if(_lr || _vlr) exitWith {
 			_vehicleLR call TFAR_fnc_setActiveLRRadio; //swap to vehicle lr to edit
 		};
 	};
-	_lrProfile set [_lrIndex, _value];
+	if(count _lrData > 0) then { _lrData set [_lrIndex, _value]; }
+	else { LOG_ERROR("No LR Data for setting radio. Probably not a good thing."); };
+
 	_currentLR call TFAR_fnc_setActiveLRRadio; //swap back to original radio
 	true
 };

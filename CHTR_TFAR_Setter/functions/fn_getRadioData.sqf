@@ -39,15 +39,33 @@ if(!_lr && !_vlr) exitWith {
 if(_lr || _vlr) exitWith {
 	LOG("Testing VLR or LR Radio Get");
 	
-	_lrData = _currentProfile select LRDATA_INDEX;
-	_lrIndex = LR_INDEX;
+	_lrData = _currentProfile select LRDATA_INDEX; // Where LR and VLR info is stored in an array
+	_lrIsArrayofArrays = _lrData isEqualTypeArray [[],[]];
+	
+	if(!(_lrIsArrayofArrays)) then {
+		LOG_ERROR("Old settings layout detected");
+		_lrNewData = call FUNC(copyLegacyLRData);
+		LOG_ERROR("Data Modified into new format");
+		_currentProfile set [LRDATA_INDEX, _lrNewData];
+		LOG_ERROR("New Format Applied");
+		_lrData = _currentProfile select LRDATA_INDEX; 
+	};
 
+
+	_lrIndex = LR_INDEX; // Where LR data is inside the array
 	if(_vlr) then {
 		LOG("Getting VLR Radio Data");
-		_lrIndex = VLR_INDEX;
+		_lrIndex = VLR_INDEX; // Where VLR data is inside the array
 	};
 	
-	_lrData select _lrIndex
+	
+	if(count _lrData > 0 ) then { 
+		_lrData select _lrIndex; 
+	} else { 
+		LOG_ERROR("No LR Data for getting. Probably not a good thing"); 
+		[] 
+	};
 };
+
 LOG_ERROR("Attempted to load Vehicle Short Range - Unsupported Operation");
 []
