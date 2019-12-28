@@ -26,10 +26,8 @@ _type = "LR";
 LOG("Grabbing LR Settings from radio");
 _radioData = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings;
 if(_vlr) then {
-	LOG("INSIDE VLR Save Settings");
 	_type = "VLR";
-	LOG("Grabbing VLR Settings from radio");
-	_radioData = (call TFAR_fnc_vehicleLR) call TFAR_fnc_getLrSettings;
+	_radioData = (player call TFAR_fnc_vehicleLR) call TFAR_fnc_getLrSettings;
 };
 LOG(format["Saving %1 Settings", _type]);
 _success = [true, _vlr, _radioData] call FUNC(setRadioData);
@@ -37,7 +35,8 @@ _success = [true, _vlr, _radioData] call FUNC(setRadioData);
 if(_showResult) then {
 	if(!_success) exitWith {
 		[format["Failed to save %1 Settings", _type], QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
-		LOG_ERROR(format["Failed to save %1 Settings", _type]);
+		if(_vlr) then { LOG_ERROR("Cannot load empty radioData for VLR"); }
+		else { LOG_ERROR("Cannot load empty radioData for LR"); };
 		1
 	};
 	[format["Saved %1 Settings", _type], QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;

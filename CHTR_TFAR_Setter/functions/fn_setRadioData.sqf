@@ -40,7 +40,8 @@ if(!_lr && !_vlr) exitWith {
 	true
 };
 if(_lr || _vlr) exitWith {
-	_currentLR = call TFAR_fnc_getActiveLR; //current active radio
+	_currentLR = player call TFAR_fnc_getActiveLR; //current active radio
+	_currentLRName = _currentLR select 1;
 	_lrProfile = _currentProfile select LRDATA_INDEX; //DATA = LR/SR
 	_lrIndex = LR_INDEX; //different LR_INDEX, this one refers to LR/VLR not LR/SR
 	LOG("Testing VLR or LR Radio Get");
@@ -49,10 +50,11 @@ if(_lr || _vlr) exitWith {
 	} else {
 		LOG("Saving Vehicle LR Data");
 
-		_vehicleLR = call TFAR_fnc_vehicleLR; //current vehicle's radio
+		_vehicleLR = player call TFAR_fnc_vehicleLR; //current vehicle's radio
+		_vehicleLRName = _vehcileLR select 1;
 		_lrIndex = VLR_INDEX;
 
-		if (_currentLR != _vehicleLR) then {
+		if (_currentLRName != _vehicleLRName) then {
 			_vehicleLR call TFAR_fnc_setActiveLRRadio; //swap to vehicle lr to edit
 		};
 	};

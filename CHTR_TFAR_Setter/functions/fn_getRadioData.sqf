@@ -38,23 +38,15 @@ if(!_lr && !_vlr) exitWith {
 
 if(_lr || _vlr) exitWith {
 	LOG("Testing VLR or LR Radio Get");
-	_currentLR = call TFAR_fnc_activeLRRadio; //current active radioChannelAdd
+	
 	_lrData = _currentProfile select LRDATA_INDEX;
 	_lrIndex = LR_INDEX;
 
-	if(!_vlr) then {
-		LOG("Getting LR Radio Data");
-	} else {
+	if(_vlr) then {
 		LOG("Getting VLR Radio Data");
 		_lrIndex = VLR_INDEX;
-		_vehicleLR = call TFAR_fnc_vehicleLR; //Get current vehicle's radio
-		if (_currentLR != _vehicleLR) then {
-			LOG("VLR Radio Not Active");
-			LOG("Setting VLR As Active Radio");
-			_vehicleLR call TFAR_fnc_setActiveLRRadio; //swap to vehicle lr to edit
-		};
 	};
-	_currentLR call TFAR_fnc_setActiveLRRadio; //swap back to original radio
+	
 	_lrData select _lrIndex
 };
 LOG_ERROR("Attempted to load Vehicle Short Range - Unsupported Operation");
