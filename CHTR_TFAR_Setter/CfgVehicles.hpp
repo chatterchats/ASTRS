@@ -8,6 +8,7 @@
 #define ALTERNATE_LAYOUT (call FUNC(layoutOptionCheck))
 #define SHORTCUT_ENABLED call FUNC(shortcutEnabledCheck)
 
+
 class CfgVehicles {
     class Man;
     class CAManBase: Man {
@@ -48,6 +49,23 @@ class CfgVehicles {
 							displayName = "Save";
 						};
 					};
+					//Original Layout, ALT_LAYOUT = False or something
+					class VLR_Root : ADDON_EXCEPT{
+						displayName = "VLR";
+						icon = QUOTE(ICON_PATH(lr));
+						statement = QUOTE(if(SHORTCUT_ENABLED) then {[ARR_2(true, true)] call FUNC(loadLRSettings)};);
+						condition = QUOTE(!ALTERNATE_LAYOUT && SHOW_VLR && HAS_VLR);
+						class LR_Load : ADDON_EXCEPT{
+							icon = QUOTE(ICON_PATH(load));
+							statement = QUOTE([ARR_2(true, true)] call FUNC(loadLRSettings));
+							displayName = "Load";
+						};
+						class LR_Save : ADDON_EXCEPT{
+							icon = QUOTE(ICON_PATH(save));
+							statement = QUOTE([ARR_2(true, true)] call FUNC(saveLRSettings));
+							displayName = "Save";
+						};
+					};
 					//Original Layout, ALTERNATE_LAYOUT = False
 					class SR_Root : ADDON_EXCEPT{
 						displayName = "SR";
@@ -77,6 +95,12 @@ class CfgVehicles {
 							statement = QUOTE([true] call FUNC(saveLRSettings));
 							condition = QUOTE(SHOW_LR && HAS_LR);
 						};
+						class Save_VLR : ADDON_EXCEPT{
+							displayName = "VLR";
+							icon = QUOTE(ICON_PATH(lr));
+							condition = QUOTE(HAS_VLR && SHOW_VLR);
+							statement = QUOTE([ARR_2(true,true)] call FUNC(saveLRSettings));
+						};
 						class Save_SR : ADDON_EXCEPT{
 							icon = QUOTE(ICON_PATH(sr));
 							displayName = "SR";
@@ -95,6 +119,12 @@ class CfgVehicles {
 							icon = QUOTE(ICON_PATH(lr));
 							statement = QUOTE([true] call FUNC(loadLRSettings));
 							condition = QUOTE(SHOW_LR && HAS_LR);
+						};
+						class Load_VLR : ADDON_EXCEPT{
+							displayName = "VLR";
+							icon = QUOTE(ICON_PATH(lr));
+							condition = QUOTE(HAS_VLR && SHOW_VLR);
+							statement = QUOTE([ARR_2(true,true)] call FUNC(loadLRSettings));
 						};
 						class Load_SR : ADDON_EXCEPT{
 							displayName = "SR";
