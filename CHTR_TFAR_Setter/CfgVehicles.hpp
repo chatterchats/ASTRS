@@ -1,10 +1,10 @@
 #define HAS_LR call TFAR_fnc_haveLRRadio
 #define HAS_SR call TFAR_fnc_haveSWRadio
 #define HAS_VLR (vehicle player) call TFAR_fnc_hasVehicleRadio
-#define SHOW_LR call FUNC(showSRCheck)
-#define SHOW_SR call FUNC(showLRCheck)
-#define SHOW_VLR true
-#define IN_VIC (vehicle player) != player
+#define SHOW_LR call FUNC(showLRCheck)
+#define SHOW_SR call FUNC(showSRCheck)
+#define SHOW_VLR call FUNC(showVLRCheck)
+#define IN_VIC ((vehicle player) != player)
 #define ALTERNATE_LAYOUT (call FUNC(layoutOptionCheck))
 #define SHORTCUT_ENABLED call FUNC(shortcutEnabledCheck)
 
