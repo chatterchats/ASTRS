@@ -23,35 +23,31 @@ params[
     ["_vlr", false, [true]]
 ];
 
-LOG("Set LR Saving to Backpack");
 _type = "LR";
 if(_vlr) then {
-    LOG("VLR is True");
-    LOG("Setting LR Saving to Vehicle");
     _type = "VLR";
 };
 
 _backpackLR = player call TFAR_fnc_backpackLR;
 _vehicleLR = player call TFAR_fnc_vehicleLR;
-
 _radioData = [true, _vlr] call FUNC(getRadioData);
+LOGF_2("Loading %1 Settings: %2",_type,_radioData);
+
 if(count _radioData == 0) exitWith {
-	if(_vlr) then { LOG_ERROR("Cannot load empty radioData for VLR"); }
-	else { LOG_ERROR("Cannot load empty radioData for LR"); };
+    LOG_ERRORF_1("Cannot load empty radioData for %1", _type);
+	[format["Failed to load %1 Settings -- Empty", _type], QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
     1
 };
 
-if(_vlr && ((vehicle player) call TFAR_fnc_hasVehicleRadio)) then {
+if(_vlr) then {
     [_vehicleLR select 0, _vehicleLR select 1, _radioData] call TFAR_fnc_setLrSettings;
-	LOG("Loading VLR Settings:");
-	LOG(_radioData);
+    //TODO: Test it actually changed correctly
 } else {
     [_backpackLR select 0, _backpackLR select 1, _radioData] call TFAR_fnc_setLrSettings;
-	LOG("Loading LR Settings:");
-	LOG(_radioData);
+    //TODO: Test it actually changed correctly
 };
 
 if(_showResult) then {
-    [format["Loading %1 Settings", _type], QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
+	[format["Loaded %1 Settings", _type], QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
 };
 0
