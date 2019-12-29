@@ -4,7 +4,7 @@
 #define SHOW_LR call FUNC(showLRCheck)
 #define SHOW_SR call FUNC(showSRCheck)
 #define SHOW_VLR call FUNC(showVLRCheck)
-#define IN_VIC ((vehicle player) != player)
+#define IN_VIC vehicle player != player
 #define ALTERNATE_LAYOUT (call FUNC(layoutOptionCheck))
 #define SHORTCUT_ENABLED call FUNC(shortcutEnabledCheck)
 
@@ -54,7 +54,7 @@ class CfgVehicles {
 						displayName = "VLR";
 						icon = QUOTE(ICON_PATH(lr));
 						statement = QUOTE(if(SHORTCUT_ENABLED) then {[ARR_2(true, true)] call FUNC(loadLRSettings)};);
-						condition = QUOTE(!ALTERNATE_LAYOUT && SHOW_VLR && HAS_VLR);
+						condition = QUOTE(!ALTERNATE_LAYOUT && SHOW_VLR && HAS_VLR && IN_VIC);
 						class LR_Load : ADDON_EXCEPT{
 							icon = QUOTE(ICON_PATH(load));
 							statement = QUOTE([ARR_2(true, true)] call FUNC(loadLRSettings));
@@ -87,7 +87,7 @@ class CfgVehicles {
 					class Save_Root : ADDON_EXCEPT{
 						displayName = "Save";
 						statement = "";
-						condition = QUOTE(ALTERNATE_LAYOUT && (SHOW_LR || SHOW_SR) && (HAS_LR || HAS_SR));
+						condition = QUOTE(ALTERNATE_LAYOUT && ((SHOW_LR && HAS_LR) || (SHOW_SR && HAS_SR) || (SHOW_VLR && HAS_VLR && IN_VIC)));
 						icon = QUOTE(ICON_PATH(save));
 						class Save_LR : ADDON_EXCEPT{
 							displayName = "LR";
@@ -98,7 +98,7 @@ class CfgVehicles {
 						class Save_VLR : ADDON_EXCEPT{
 							displayName = "VLR";
 							icon = QUOTE(ICON_PATH(lr));
-							condition = QUOTE(HAS_VLR && SHOW_VLR);
+							condition = QUOTE(HAS_VLR && SHOW_VLR && IN_VIC);
 							statement = QUOTE([ARR_2(true,true)] call FUNC(saveLRSettings));
 						};
 						class Save_SR : ADDON_EXCEPT{
@@ -113,7 +113,7 @@ class CfgVehicles {
 						displayName = "Load";
 						icon = QUOTE(ICON_PATH(load));
 						statement = QUOTE(if(SHORTCUT_ENABLED && SHOW_LR && SHOW_SR) then {[true] call FUNC(loadBothSettings)};);
-						condition = QUOTE(ALTERNATE_LAYOUT && (HAS_LR || HAS_SR));
+						condition = QUOTE(ALTERNATE_LAYOUT && ((SHOW_LR && HAS_LR) || (SHOW_SR && HAS_SR) || (SHOW_VLR && HAS_VLR && IN_VIC)));
 						class Load_LR : ADDON_EXCEPT{
 							displayName = "LR";
 							icon = QUOTE(ICON_PATH(lr));
@@ -123,7 +123,7 @@ class CfgVehicles {
 						class Load_VLR : ADDON_EXCEPT{
 							displayName = "VLR";
 							icon = QUOTE(ICON_PATH(lr));
-							condition = QUOTE(HAS_VLR && SHOW_VLR);
+							condition = QUOTE(HAS_VLR && SHOW_VLR && IN_VIC);
 							statement = QUOTE([ARR_2(true,true)] call FUNC(loadLRSettings));
 						};
 						class Load_SR : ADDON_EXCEPT{
