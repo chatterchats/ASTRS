@@ -1,5 +1,5 @@
 //[currentProfileIndex, [profileID, profileDisplayName, lrData, srData, prefs]]
-#define SETTINGS_DEFAULT [0, [0, "Default Profile", [[], []], [], []]]
+#define SETTINGS_DEFAULT [0, [0, "Profile 1", [[], []], [], []], [0, "Profile 2", [[], []], [], []], [0, "Profile 3", [[], []], [], []]]
 //Data Indexes(Highest Level of array)
 #define CURRENTPROFILE_ID 0
 //Profile Indexes (First nested array)
