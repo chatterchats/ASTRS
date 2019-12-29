@@ -22,6 +22,7 @@ class CfgFunctions {
 			class loadSRSettings {};
 			class saveSRSettings {};
 			class showLRCheck {};
+			class showVLRCheck {};
 			class showSRCheck {};
 			class layoutOptionCheck {};
 			class loadBothSettings {};
