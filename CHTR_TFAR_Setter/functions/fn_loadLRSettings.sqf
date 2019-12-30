@@ -23,28 +23,30 @@ params[
     ["_vlr", false, [true]]
 ];
 
-_type = "LR";
 if(_vlr) then {
     _type = "VLR";
+    _targetLR = player call TFAR_fnc_vehicleLR;
+}else{
+    _type = "LR";
+    _targetLR = player call TFAR_fnc_backpackLR;
 };
 
-_backpackLR = player call TFAR_fnc_backpackLR;
-_vehicleLR = player call TFAR_fnc_vehicleLR;
 _radioData = [true, _vlr] call FUNC(getRadioData);
 LOGF_2("Loading %1 Settings: %2",_type,_radioData);
 
 if(count _radioData == 0) exitWith {
     LOG_ERRORF_1("Cannot load empty radioData for %1", _type);
-	[format["Failed to load %1 Settings -- Empty", _type], QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
+    if(_showResult) then {
+	    [format["Failed to load %1 settings, try setting them first", _type], QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
+    };
     1
 };
 
-if(_vlr) then {
-    [_vehicleLR select 0, _vehicleLR select 1, _radioData] call TFAR_fnc_setLrSettings;
-    //TODO: Test it actually changed correctly
-} else {
-    [_backpackLR select 0, _backpackLR select 1, _radioData] call TFAR_fnc_setLrSettings;
-    //TODO: Test it actually changed correctly
+[_targetLR select 0, _targetLR select 1, _radioData] call TFAR_fnc_setLrSettings;
+_result = _targetLR call TFAR_fnc_getLrSettings;
+if(!(_result isEqualTo _radioData)) exitWith {
+    LOG_ERRORF_2("Failed to save VLR Data [Expected: %1 || Result: %2]", _result, _radioData);
+    1
 };
 
 if(_showResult) then {

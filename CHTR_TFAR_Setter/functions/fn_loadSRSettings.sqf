@@ -24,7 +24,7 @@ LOG("Loading SR Settings");
 _radioData = [false, false] call FUNC(getRadioData);
 if(count _radioData == 0) exitWith {
 	if(_showResult) then {
-		["Failed to load SR Settings", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
+		["Failed to load empty SR Settings, try setting them first", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
 	};
 	LOG_ERROR("Cannot load empty SR Settings");
 	1
