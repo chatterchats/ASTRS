@@ -28,6 +28,7 @@ if(count _settings == 0) exitWith {
 };
 _profileIndex = (_settings select CURRENTPROFILE_ID) + 1;
 _currentProfile = _settings select _profileIndex;
+LOGF_2("Reading profile %1 (%2)", _profileIndex, _currentProfile select PROFILEDISPLAYNAME_INDEX);
 
 if(!_lr && !_vlr) exitWith {
 	LOG("Getting SR Radio Data");
@@ -59,13 +60,17 @@ if(_lr || _vlr) exitWith {
 		LOG_ERRORF_1("Data Index '%1' is out of range", _lrIndex);
 		[]
 	};
-	if(_lrDataCount > 0) then {
-		_lrData select _lrIndex; 
-	} else {
+	if(_lrDataCount == 0) exitWith {
 		LOG_ERROR("No LR Data for getting. Probably not a good thing"); 
 		[]
 	};
+	_lrData select _lrIndex;
 };
 
-LOG_ERROR("Attempted to load Vehicle Short Range - Unsupported Operation");
+if(!_lr && _vlr) exitWith{
+	LOG_ERROR("Unsupported Operation -- Attempted to load Vehicle Short Range");
+	[]
+};
+
+LOG_ERROR("Unimplemented");
 []

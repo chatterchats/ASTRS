@@ -32,6 +32,7 @@ if(count _settings == 0) exitWith {
 };
 _profileIndex = (_settings select CURRENTPROFILE_ID) + 1;
 _currentProfile = _settings select _profileIndex; //Selects profile
+LOGF_2("Reading profile %1 (%2)", _profileIndex, _currentProfile select PROFILEDISPLAYNAME_INDEX);
 
 if(!_lr && !_vlr) exitWith {
 	LOG("Saving SR Radio Data");
