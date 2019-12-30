@@ -22,6 +22,7 @@ class CfgFunctions {
 			class loadSRSettings {};
 			class saveSRSettings {};
 			class showLRCheck {};
+			class showVLRCheck {};
 			class showSRCheck {};
 			class layoutOptionCheck {};
 			class loadBothSettings {};
@@ -32,6 +33,7 @@ class CfgFunctions {
 			class loadSettings {};
 			class setProfile {};
 			class copyLegacyRadioData {};
+			class copyLegacyLRData {};
 			class shortcutEnabledCheck {};
         };
 	};
@@ -43,4 +45,4 @@ class Extended_PreInit_EventHandlers {
     class ADDON {
         init = QUOTE(call COMPILE_FILE(XEH_preInit));
     };
-}; 
+};

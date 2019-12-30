@@ -17,7 +17,7 @@
 #include "defaults.hpp"
 params[["_index", 0, [0]]];
 if(_index < 0 || _index >= count PREFS_DEFAULT) exitWith {
-	LOG_ERROR(format[QUOTE(Index %1 out of range at __FILE__), _index]);
+	LOG_ERRORF_1("Index '%1' out of range", _index);
 	[]
 };
 _settings = call FUNC(loadSettings);
