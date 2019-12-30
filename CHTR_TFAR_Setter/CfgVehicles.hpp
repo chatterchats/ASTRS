@@ -26,11 +26,11 @@ class CfgVehicles {
 					displayName = "TFAR Setter";
 					icon = QUOTE(ICON_PATH(interact_root));
 
-					class Load_Both : ADDON_EXCEPT{
-						displayName = "Load Both";
+					class Load_All : ADDON_EXCEPT{
+						displayName = "Load All";
 						icon = QUOTE(ICON_PATH(interact_root));
-						statement = QUOTE([true] call FUNC(loadBothSettings));
-						condition = QUOTE(!ALTERNATE_LAYOUT && SHOW_LR && SHOW_SR && HAS_LR && HAS_SR);
+						statement = QUOTE([true] call FUNC(loadAllSettings)); 
+						condition = QUOTE(!ALTERNATE_LAYOUT && ((SHOW_LR && HAS_LR) || (SHOW_SR && HAS_SR) || (SHOW_VLR && IN_VIC && HAS_VLR)));
 					};
 					//Original Layout, ALTERNATE_LAYOUT = False
 					class LR_Root : ADDON_EXCEPT{
@@ -132,11 +132,11 @@ class CfgVehicles {
 							statement = QUOTE([true] call FUNC(loadSRSettings));
 							condition = QUOTE(SHOW_SR && HAS_SR);
 						};
-						class Load_Both : ADDON_EXCEPT{
-							displayName = "Both";
+						class Load_All : ADDON_EXCEPT{
+							displayName = "All";
 							icon = QUOTE(ICON_PATH(interact_root));
-							statement = QUOTE([true] call FUNC(loadBothSettings));
-							condition = QUOTE(SHOW_LR && SHOW_SR && HAS_LR && HAS_SR);
+							statement = QUOTE([true] call FUNC(loadAllSettings));
+							condition = condition = QUOTE(ALTERNATE_LAYOUT && ((SHOW_LR && HAS_LR) || (SHOW_SR && HAS_SR) || (SHOW_VLR && IN_VIC && HAS_VLR)));
 						};
 					};
 				};
