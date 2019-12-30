@@ -54,16 +54,17 @@ if(_lr || _vlr) exitWith {
 	if(_vlr) then {
 		_lrIndex = VLR_INDEX; // Where VLR data is inside the array
 	};
-	
-	_lrDataCount = count _lrData; //TODO: index bounds checking aswell
+	//Validation block
+	_lrDataCount = count _lrData;
 	if(_lrIndex >= _lrDataCount) exitWith {
 		LOG_ERRORF_1("Data Index '%1' is out of range", _lrIndex);
 		[]
 	};
 	if(_lrDataCount == 0) exitWith {
-		LOG_ERROR("No LR Data for getting. Probably not a good thing"); 
+		LOG_ERROR("_lrData is empty"); 
 		[]
 	};
+	//return value if nothing is wrong
 	_lrData select _lrIndex;
 };
 
