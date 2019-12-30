@@ -30,7 +30,7 @@ if(count _settings == 0) exitWith {
 /*Selecting the correct information*/
 _profileIndex = (_settings select CURRENTPROFILE_ID) + 1;
 _currentProfile = _settings select _profileIndex;
-private _oldLRData = _currentProfile select LRDATA_INDEX; // Backing up the Old Backpack LR Data
+_oldLRData = _currentProfile select LRDATA_INDEX; // Backing up the Old Backpack LR Data
 _new = [];// Creating a new array
 
 /* Fixing the Array */

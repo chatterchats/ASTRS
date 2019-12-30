@@ -33,45 +33,36 @@ if(count _settings == 0) exitWith {
 _profileIndex = (_settings select CURRENTPROFILE_ID) + 1;
 _currentProfile = _settings select _profileIndex; //Selects profile
 
-LOG("Testing Wether LR or SR Radio Will be Set");
 if(!_lr && !_vlr) exitWith {
 	LOG("Saving SR Radio Data");
 	_currentProfile set [SRDATA_INDEX, _value];
 	true
 };
 if(_lr || _vlr) exitWith {
-	_currentLR = player call TFAR_fnc_getActiveLR; //current active radio
-	_currentLRName = _currentLR select 1;
+	_type = "LR";
+	if(_vlr) then {
+		_type = "VLR";
+	};
+	LOGF_1("Saving %1 Radio Data", _type);
 	_lrData = _currentProfile select LRDATA_INDEX; // Where LR and VLR info is stored in an array
-	_lrIndex = LR_INDEX; // Where LR data is inside the array
+	//Check data array in correct format, cater to legacy option
 	_lrIsArrayofArrays = _lrData isEqualTypeArray [[],[]];
-	
 	if(!(_lrIsArrayofArrays)) then {
-		LOG_ERROR("Old settings layout detected");
+		LOG("Old LR Data layout detected, copying to new layout");
 		_lrNewData = call FUNC(copyLegacyLRData);
-		LOG_ERROR("Data Modified into new format");
 		_currentProfile set [LRDATA_INDEX, _lrNewData];
-		LOG_ERROR("New Format Applied");
+		LOG("New LR Data Format Applied");
 	};
-
-	LOG("Testing VLR or LR Radio Get");
-	if(!_vlr) then {
-		LOG("Saving LR Radio Data");
-	} else {
-		LOG("Saving Vehicle LR Data");
-
-		_vehicleLR = player call TFAR_fnc_vehicleLR; //current vehicle's radio
-		_vehicleLRName = _vehcileLR select 1;
-		_lrIndex = VLR_INDEX;
-
-		if (_currentLRName != _vehicleLRName) then {
-			_vehicleLR call TFAR_fnc_setActiveLRRadio; //swap to vehicle lr to edit
-		};
+	_lrIndex = LR_INDEX; // Where LR data is inside the array
+	if(_vlr) then {
+		_lrIndex = VLR_INDEX; //move to vlr pos
 	};
-	if(count _lrData > 0) then { _lrData set [_lrIndex, _value]; }
-	else { LOG_ERROR("No LR Data for setting radio. Probably not a good thing."); };
-
-	_currentLR call TFAR_fnc_setActiveLRRadio; //swap back to original radio
+	if(count _lrData == 0) exitWith
+	{
+		LOG_ERRORF_1("_lrData is not set, likely malformed settings data, unable to save %1 data", _type);
+		false
+	};
+	_lrData set [_lrIndex, _value];
 	true
 };
 LOG_ERROR("Unsupported Operation -- Cannot save Vehicle Short Range Radio");

@@ -30,7 +30,7 @@ if((_resultLR + _resultSR) == 0) then {
 }else
 {
 	if(_showResult) then {
-		//LOG(format["Failed to Load LR(%1) and SR(%2)", _resultLR, _resultSR]);
+		LOGF_2("Failed to Load LR(%1) and SR(%2)", _resultLR, _resultSR);
 		["One or More Load Operations Failed", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
 	};
 };

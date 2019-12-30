@@ -29,9 +29,10 @@ _success = [false, false, _radioData] call FUNC(setRadioData);
 if(_showResult) then {
 	if(!_success) exitWith {
 		["Failed to Save SR Settings", QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
-		LOG_ERROR(format["Failed to save %1 Settings", _type]);
+		LOG_ERROR("Failed to save SR Settings");
 		1
 	};
 	["Saved SR Settings", QUOTE(ICON_PATH(interact_root))] call ace_common_fnc_displayTextPicture;
+	LOG("Saved SR Settings Successfully");
 };
 0

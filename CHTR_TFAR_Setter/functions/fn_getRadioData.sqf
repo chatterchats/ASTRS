@@ -29,41 +29,41 @@ if(count _settings == 0) exitWith {
 _profileIndex = (_settings select CURRENTPROFILE_ID) + 1;
 _currentProfile = _settings select _profileIndex;
 
-LOG("Testing LR/SR Radio Get");
-
 if(!_lr && !_vlr) exitWith {
 	LOG("Getting SR Radio Data");
 	_currentProfile select SRDATA_INDEX
 };
 
 if(_lr || _vlr) exitWith {
-	LOG("Testing VLR or LR Radio Get");
-	
+	_type = "LR";
+	if(_vlr) then {
+		_type = "VLR";
+	};
+	LOGF_1("Loading %1 Radio Data", _type);
 	_lrData = _currentProfile select LRDATA_INDEX; // Where LR and VLR info is stored in an array
 	_lrIsArrayofArrays = _lrData isEqualTypeArray [[],[]];
-	
 	if(!(_lrIsArrayofArrays)) then {
-		LOG_ERROR("Old settings layout detected");
+		LOG("Old settings layout detected");
 		_lrNewData = call FUNC(copyLegacyLRData);
-		LOG_ERROR("Data Modified into new format");
 		_currentProfile set [LRDATA_INDEX, _lrNewData];
-		LOG_ERROR("New Format Applied");
+		LOG("New Format Applied");
 		_lrData = _currentProfile select LRDATA_INDEX; 
 	};
-
-
 	_lrIndex = LR_INDEX; // Where LR data is inside the array
 	if(_vlr) then {
-		LOG("Getting VLR Radio Data");
 		_lrIndex = VLR_INDEX; // Where VLR data is inside the array
 	};
 	
-	
-	if(count _lrData > 0 ) then { 
+	_lrDataCount = count _lrData; //TODO: index bounds checking aswell
+	if(_lrIndex > _lrDataCount) exitWith {
+		LOG_ERRORF_1("Data Index '%1' is out of range", _lrIndex);
+		[]
+	};
+	if(_lrDataCount > 0) then {
 		_lrData select _lrIndex; 
-	} else { 
+	} else {
 		LOG_ERROR("No LR Data for getting. Probably not a good thing"); 
-		[] 
+		[]
 	};
 };
 
