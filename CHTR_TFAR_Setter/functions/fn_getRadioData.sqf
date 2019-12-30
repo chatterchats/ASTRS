@@ -55,7 +55,7 @@ if(_lr || _vlr) exitWith {
 	};
 	
 	_lrDataCount = count _lrData; //TODO: index bounds checking aswell
-	if(_lrIndex > _lrDataCount) exitWith {
+	if(_lrIndex >= _lrDataCount) exitWith {
 		LOG_ERRORF_1("Data Index '%1' is out of range", _lrIndex);
 		[]
 	};
