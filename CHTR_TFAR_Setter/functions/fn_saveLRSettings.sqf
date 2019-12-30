@@ -22,12 +22,11 @@ params[
 	["_showResult", true, [true]],
 	["_vlr", false, [true]]
 ];
-_type = "LR";
-_radioData = (player call TFAR_fnc_backpackLR) call TFAR_fnc_getLrSettings;
-if(_vlr) then {
-	_type = "VLR";
-	_radioData = (player call TFAR_fnc_vehicleLR) call TFAR_fnc_getLrSettings;
-};
+
+_type = if(_vlr) then {"VLR"} else {"LR"};
+_radioData = if(_vlr) then {player call TFAR_fnc_vehicleLR} else {player call TFAR_fnc_backpackLR};
+_radioData = _radioData call TFAR_fnc_getLrSettings;
+
 LOGF_1("Saving %1 Settings", _type);
 _success = [true, _vlr, _radioData] call FUNC(setRadioData);
 

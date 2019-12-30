@@ -23,13 +23,8 @@ params[
     ["_vlr", false, [true]]
 ];
 
-if(_vlr) then {
-    _type = "VLR";
-    _targetLR = player call TFAR_fnc_vehicleLR;
-}else{
-    _type = "LR";
-    _targetLR = player call TFAR_fnc_backpackLR;
-};
+_type = if(_vlr) then {"VLR"} else {"LR"};
+_targetLR = if(_vlr) then {player call TFAR_fnc_vehicleLR} else {player call TFAR_fnc_backpackLR};
 
 _radioData = [true, _vlr] call FUNC(getRadioData);
 LOGF_2("Loading %1 Settings: %2",_type,_radioData);
@@ -43,6 +38,7 @@ if(count _radioData == 0) exitWith {
 };
 
 [_targetLR select 0, _targetLR select 1, _radioData] call TFAR_fnc_setLrSettings;
+//test if was set correctly
 _result = _targetLR call TFAR_fnc_getLrSettings;
 if(!(_result isEqualTo _radioData)) exitWith {
     LOG_ERRORF_2("Failed to save VLR Data [Expected: %1 || Result: %2]", _result, _radioData);

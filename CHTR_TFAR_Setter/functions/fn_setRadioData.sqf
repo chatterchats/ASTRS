@@ -40,10 +40,9 @@ if(!_lr && !_vlr) exitWith {
 	true
 };
 if(_lr || _vlr) exitWith {
-	_type = "LR";
-	if(_vlr) then {
-		_type = "VLR";
-	};
+	_type = if(_vlr) then {"VLR"} else {"LR"};
+	_lrIndex = if(_vlr) then {VLR_INDEX} else {LR_INDEX};
+
 	LOGF_1("Saving %1 Radio Data", _type);
 	_lrData = _currentProfile select LRDATA_INDEX; // Where LR and VLR info is stored in an array
 	//Check data array in correct format, cater to legacy option
@@ -54,16 +53,18 @@ if(_lr || _vlr) exitWith {
 		_currentProfile set [LRDATA_INDEX, _lrNewData];
 		LOG("New LR Data Format Applied");
 	};
-	_lrIndex = LR_INDEX; // Where LR data is inside the array
-	if(_vlr) then {
-		_lrIndex = VLR_INDEX; //move to vlr pos
-	};
+
+	//Validation block
 	if(count _lrData == 0) exitWith
 	{
 		LOG_ERRORF_1("_lrData is not set, likely malformed settings data, unable to save %1 data", _type);
 		false
 	};
+
+	//Set lr data
 	_lrData set [_lrIndex, _value];
+
+	//return value if successful
 	true
 };
 LOG_ERROR("Unsupported Operation -- Cannot save Vehicle Short Range Radio");

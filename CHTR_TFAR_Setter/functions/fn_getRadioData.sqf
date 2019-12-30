@@ -36,10 +36,9 @@ if(!_lr && !_vlr) exitWith {
 };
 
 if(_lr || _vlr) exitWith {
-	_type = "LR";
-	if(_vlr) then {
-		_type = "VLR";
-	};
+	_type = if(_vlr) then {"VLR"} else {"LR"};
+	_lrIndex = if(_vlr) then {VLR_INDEX} else {LR_INDEX};
+
 	LOGF_1("Loading %1 Radio Data", _type);
 	_lrData = _currentProfile select LRDATA_INDEX; // Where LR and VLR info is stored in an array
 	_lrIsArrayofArrays = _lrData isEqualTypeArray [[],[]];
@@ -50,10 +49,7 @@ if(_lr || _vlr) exitWith {
 		LOG("New Format Applied");
 		_lrData = _currentProfile select LRDATA_INDEX; 
 	};
-	_lrIndex = LR_INDEX; // Where LR data is inside the array
-	if(_vlr) then {
-		_lrIndex = VLR_INDEX; // Where VLR data is inside the array
-	};
+	
 	//Validation block
 	_lrDataCount = count _lrData;
 	if(_lrIndex >= _lrDataCount) exitWith {
@@ -64,6 +60,7 @@ if(_lr || _vlr) exitWith {
 		LOG_ERROR("_lrData is empty"); 
 		[]
 	};
+
 	//return value if nothing is wrong
 	_lrData select _lrIndex;
 };
