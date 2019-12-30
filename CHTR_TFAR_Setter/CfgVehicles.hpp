@@ -52,7 +52,7 @@ class CfgVehicles {
 					//Original Layout, ALT_LAYOUT = False or something
 					class VLR_Root : ADDON_EXCEPT{
 						displayName = "VLR";
-						icon = QUOTE(ICON_PATH(lr));
+						icon = QUOTE(ICON_PATH(vlr_plane));
 						statement = QUOTE(if(SHORTCUT_ENABLED) then {[ARR_2(true, true)] call FUNC(loadLRSettings)};);
 						condition = QUOTE(!ALTERNATE_LAYOUT && SHOW_VLR && HAS_VLR && IN_VIC);
 						class LR_Load : ADDON_EXCEPT{
@@ -97,7 +97,7 @@ class CfgVehicles {
 						};
 						class Save_VLR : ADDON_EXCEPT{
 							displayName = "VLR";
-							icon = QUOTE(ICON_PATH(lr));
+							icon = QUOTE(ICON_PATH(vlr_plane));
 							condition = QUOTE(HAS_VLR && SHOW_VLR && IN_VIC);
 							statement = QUOTE([ARR_2(true,true)] call FUNC(saveLRSettings));
 						};
@@ -122,7 +122,7 @@ class CfgVehicles {
 						};
 						class Load_VLR : ADDON_EXCEPT{
 							displayName = "VLR";
-							icon = QUOTE(ICON_PATH(lr));
+							icon = QUOTE(ICON_PATH(vlr_plane));
 							condition = QUOTE(HAS_VLR && SHOW_VLR && IN_VIC);
 							statement = QUOTE([ARR_2(true,true)] call FUNC(loadLRSettings));
 						};
