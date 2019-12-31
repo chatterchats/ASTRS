@@ -21,42 +21,42 @@ params[["_showResult", true, [true]]];
 LOG("Loading all relevant settings");
 
 //determine what we have
-_vlr = if(vehicle player != player) then {(vehicle player) call TFAR_fnc_hasVehicleRadio};
+_vlr = if(vehicle player != player) then {(vehicle player) call TFAR_fnc_hasVehicleRadio} else {false};
 _sr = call TFAR_fnc_haveSWRadio;
-_lr = if(player call TFAR_fnc_backpackLR != []) then {true} else {false};
+_lr = if(count (player call TFAR_fnc_backpackLR) != 0) then {true} else {false};
 
 _results = [-1,-1,-1];
-_str = [];
+_attempts = [];
 if(_sr) then {
-	_str pushBack "SR";
+	_attempts pushBack "SR";
 	_results set [0, [false] call FUNC(loadSRSettings)];
 };
 if(_lr) then {
-	_str pushBack "LR";
+	_attempts pushBack "LR";
 	_results set [1, [false] call FUNC(loadLRSettings)];
 };
 if(_vlr) then {
-	_str pushBack "VLR";
+	_attempts pushBack "VLR";
 	_results set [2, [false, true] call FUNC(loadLRSettings)];
 };
-LOGF_2("Loaded settings for %1 with results: %2", _str joinString ", ", _results);
-
-_sum = 0;
-{
-	if(_x != -1) then {
-		_sum += _x;
-	};
-}forEach _results;
-
-if(_sum != 0) then {
-	LOG("Loaded All successfully");
-	if(_showResult) then {
-		["Loaded All Settings", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
-	};
-}else
-{
-	LOGF_2("Failed to Load LR(%1) and SR(%2)", _resultLR, _resultSR);
-	if(_showResult) then {
-		["Failed to load both correctly, ensure both are set before loading", QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
-	};
+LOGF_2("Loaded settings for %1 with results: %2", _attempts joinString ", ", _results);
+if(1 in _results) then {
+	//errors, handle
+	_msg = if(0 in _results) then {"Loaded settings for %1, but %2 failed."} else {"Failed to load settings. Attempted: %1, Failed: %2"};
+	_success = [];
+	_fail = [];
+	{
+		if(_x == 1) then {
+			_fail pushBack (_attempts select _foreachIndex);
+		}else {
+			if (_x == 0) then {
+				_success pushBack (_attempts select _foreachIndex);
+			};
+		};
+	}forEach _results;
+	_successOrAttempts = if(0 in _results)then{_success}else{_attempts};
+	LOGF_2(_msg, _successOrAttempts joinString ", ", _fail joinString ", ");
+	[format[_msg, _successOrAttempts joinString ", ", _fail joinString ", "], QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
+}else {
+	[format["Loaded Settings for %1", _attempts joinString ", "], QUOTE(ICON_PATH(load))] call ace_common_fnc_displayTextPicture;
 };

@@ -1,4 +1,4 @@
-#define HAS_LR player call TFAR_fnc_backpackLR != []
+#define HAS_LR count (player call TFAR_fnc_backpackLR) != 0
 #define HAS_SR call TFAR_fnc_haveSWRadio
 #define HAS_VLR (vehicle player) call TFAR_fnc_hasVehicleRadio
 #define SHOW_LR call FUNC(showLRCheck)
