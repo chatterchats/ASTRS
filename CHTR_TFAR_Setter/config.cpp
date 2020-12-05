@@ -25,7 +25,7 @@ class CfgFunctions {
 			class showVLRCheck {};
 			class showSRCheck {};
 			class layoutOptionCheck {};
-			class loadBothSettings {};
+			class loadAllSettings {};
 			class getPrefs {};
 			class setPrefs {};
 			class getRadioData {};
