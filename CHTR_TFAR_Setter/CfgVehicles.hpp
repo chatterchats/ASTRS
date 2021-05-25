@@ -136,7 +136,7 @@ class CfgVehicles {
 							displayName = "All";
 							icon = QUOTE(ICON_PATH(interact_root));
 							statement = QUOTE([true] call FUNC(loadAllSettings));
-							condition = condition = QUOTE(ALTERNATE_LAYOUT && ((SHOW_LR && HAS_LR) || (SHOW_SR && HAS_SR) || (SHOW_VLR && IN_VIC && HAS_VLR)));
+							condition = QUOTE(ALTERNATE_LAYOUT && ((SHOW_LR && HAS_LR) || (SHOW_SR && HAS_SR) || (SHOW_VLR && IN_VIC && HAS_VLR)));
 						};
 					};
 				};
