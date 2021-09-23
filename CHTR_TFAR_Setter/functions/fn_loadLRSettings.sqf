@@ -37,7 +37,16 @@ if(count _radioData == 0) exitWith {
     1
 };
 
-[_targetLR, _radioData] call TFAR_fnc_setLrSettings;
+if (isClass(configFile >> "CfgPatches" >> "tfar_core")) then{
+    // version > 1.0
+    [_targetLR, _radioData] call TFAR_fnc_setLrSettings;
+}
+else
+{
+    // version < 1.0
+    [_targetLR select 0, _targetLR select 1, _radioData] call TFAR_fnc_setLrSettings;
+};
+
 //test if was set correctly
 _result = _targetLR call TFAR_fnc_getLrSettings;
 if(!(_result isEqualTo _radioData)) exitWith {
