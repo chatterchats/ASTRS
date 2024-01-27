@@ -1,5 +1,5 @@
-#define ADDON ASTR_Radio_Setter
-#define ADDON_NAME ACE TFAR Radio Setter
+#define ADDON ASTRS_Main
+#define ADDON_NAME A Simple TFAR Radio System
 #define FUNC(name) ADDON##_fnc_##name
 #define QUOTE(target) #target
 #define FUNCTION_PATH ADDON##\functions
