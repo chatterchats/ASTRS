@@ -25,10 +25,8 @@ if (count _settings == 0) exitWith {
 	LOG_ERROR(QUOTE(GVAR(SETTINGS) not initialised));
 	[]
 };
-_profileIndex = (_settings select 0) + 1;
-_currentProfile = _settings select _profileIndex;
 
-_prefs = _currentProfile select PREFS_INDEX;
+_prefs = _settings select PREFS_INDEX;
 if (count _prefs == 0) then {
 	LOG("Prefs empty, Initialising to defaults");
 	_prefs append PREFS_DEFAULT;

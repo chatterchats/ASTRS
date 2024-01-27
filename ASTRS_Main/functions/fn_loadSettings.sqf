@@ -29,7 +29,6 @@ if (typeName _settings == typeName false) then {
 };
 
 if (count _settings == 0) then {
-	LOG("Looking for old radio data");
 	LOG("Initialising profileNamespace to defaults");
 	_settings append SETTINGS_DEFAULT;
 	call FUNC(copyLegacyRadioData);
