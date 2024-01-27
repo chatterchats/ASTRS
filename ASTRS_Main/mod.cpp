@@ -1,0 +1,13 @@
+name                    = "ACE TFAR Long Range Setter";
+author                  = "Chatter and M3ales";
+tooltipOwned            ="ACE TFAR Long Range Setter";
+picture                 = "ATSR_Logo.paa";
+logoSmall               = "ATSR_Logo.paa";
+logo                    = "ATSR_Logo.paa";
+logoOver                = "ATSR_Logo.paa";
+hideName                = 0;
+hidePicture             = 0;
+actionName              = "Github";
+action                  = "https://github.com/RTO-Chatter/ACE-TFAR-Setter";
+description             = "A Simple Quality of Life mod for the ARMA 3 TFAR Addon. Allows you to save your current configuration, and reload it at any point in the future until a new config is saved.";
+overview                = "A Simple Quality of Life mod for the ARMA 3 TFAR Addon. Allows you to save your current configuration, and reload it at any point in the future until a new config is saved.";

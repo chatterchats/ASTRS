@@ -53,10 +53,37 @@ _vlrDefault = [] call FUNC(showVLRCheck);
 _srDefault = [] call FUNC(showSRCheck);
 _shortcutEnabled = [] call FUNC(shortcutEnabledCheck);
 
-[QUOTE(GVAR(Layout)), "CHECKBOX", ["Alternate Layout", "Change Tree Layout"], "ACE TFAR Radio Setter", _layoutDefault, 0, _alternateLayoutRun] call cba_settings_fnc_init;
-[QUOTE(GVAR(Shortcut)), "CHECKBOX", ["Enable Load Shortcuts", "Turn Off/On ability to use root lr/sr icon to load settings"], "ACE TFAR Radio Setter", _shortcutEnabled, 0, _shortcutEnabledRun] call cba_settings_fnc_init;
-[QUOTE(GVAR(ShowVLR)), "CHECKBOX", ["VLR Load/Save On", "Turn Off/On ability to set Vehicle LR"], "ACE TFAR Radio Setter", _vlrDefault, 0, _vlrShowRun] call cba_settings_fnc_init;
-[QUOTE(GVAR(ShowLR)), "CHECKBOX", ["LR Load/Save On", "Turn Off/On ability to set LR"], "ACE TFAR Radio Setter", _lrDefault, 0, _lrShowRun] call cba_settings_fnc_init;
-[QUOTE(GVAR(ShowSR)), "CHECKBOX", ["SR Load/Save On", "Turn Off/On ability to set SR"], "ACE TFAR Radio Setter", _srDefault, 0, _srShowRun] call cba_settings_fnc_init;
+[
+	QUOTE(GVAR(Layout)), "CHECKBOX", 
+	["Alternate Layout", "Change Tree Layout"], 
+	"ATRS Radio Setter", 
+	_layoutDefault, 
+	0, 
+	_alternateLayoutRun
+] call cba_settings_fnc_init;
+
+[
+	QUOTE(GVAR(Shortcut)), "CHECKBOX", 
+	["Enable Load Shortcuts", "Turn Off/On ability to use root lr/sr icon to load settings"], 
+	"ACE TFAR Radio Setter", _shortcutEnabled, 0, _shortcutEnabledRun
+] call cba_settings_fnc_init;
+
+[
+	QUOTE(GVAR(ShowVLR)), "CHECKBOX", 
+	["VLR Load/Save On", "Turn Off/On ability to set Vehicle LR"], 
+	"ATRS Radio Setter", _vlrDefault, 0, _vlrShowRun
+] call cba_settings_fnc_init;
+
+[
+	QUOTE(GVAR(ShowLR)), "CHECKBOX", 
+	["LR Load/Save On", "Turn Off/On ability to set LR"], 
+	"ATRS Radio Setter", _lrDefault, 0, _lrShowRun
+] call cba_settings_fnc_init;
+
+[
+	QUOTE(GVAR(ShowSR)), "CHECKBOX", 
+	["SR Load/Save On", "Turn Off/On ability to set SR"], 
+	"ATRS Radio Setter", _srDefault, 0, _srShowRun
+] call cba_settings_fnc_init;
 
 LOG("PreInit Complete");

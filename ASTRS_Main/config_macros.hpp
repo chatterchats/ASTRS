@@ -1,4 +1,4 @@
-#define ADDON CHTR_TFAR_Setter
+#define ADDON ASTR_Radio_Setter
 #define ADDON_NAME ACE TFAR Radio Setter
 #define FUNC(name) ADDON##_fnc_##name
 #define QUOTE(target) #target
